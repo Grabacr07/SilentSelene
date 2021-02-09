@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <UseWPF>true</UseWPF>
+    <Version>3.0.0</Version>
+    <Product>MetroRadiance</Product>
+    <Description>Modern WPF Themes</Description>
+    <Company>grabacr.net</Company>
+    <Authors>Manato KAMEYA (@Grabacr07)</Authors>
+    <Copyright>Copyright © 2014 - 2019 Manato KAMEYA</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+    <PackageReference Include="UriTemplate.Core" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MetroRadiance.Chrome\MetroRadiance.Chrome.csproj" />
+    <ProjectReference Include="..\MetroRadiance.Core\MetroRadiance.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>
