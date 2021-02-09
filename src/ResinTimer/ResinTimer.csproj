@@ -1,0 +1,84 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <Authors>Manato Kameya</Authors>
+    <Company>grabacr.net</Company>
+    <Copyright>Copyright © 2021 Manato Kameya</Copyright>
+    <Description>Resin timer for Genshin Impact.</Description>
+    <PackageProjectUrl>https://github.com/Grabacr07/ResinTimer</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Grabacr07/ResinTimer</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <FileVersion>0.0.1.0</FileVersion>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Version>0.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Remove="Assets\Licenses\.NET Core WPF.txt" />
+    <None Remove="Assets\Licenses\.NET Runtime.txt" />
+    <None Remove="Assets\Licenses\Application Insights.txt" />
+    <None Remove="Assets\Licenses\JetBrains.Annotations.txt" />
+    <None Remove="Assets\Licenses\Json.NET.txt" />
+    <None Remove="Assets\Licenses\Livet.txt" />
+    <None Remove="Assets\Licenses\MetroRadiance.txt" />
+    <None Remove="Assets\Licenses\Mio.txt" />
+    <None Remove="Assets\Licenses\ReactiveProperty.txt" />
+    <None Remove="Assets\Licenses\Rx.NET.txt" />
+    <None Remove="Assets\Licenses\UriTemplate.Core.txt" />
+    <None Remove="Assets\Licenses\Windows Community Toolkit.txt" />
+    <None Remove="Assets\Licenses\XamlBehaviors for WPF.txt" />
+    <EmbeddedResource Include="Assets\Licenses\.NET Core WPF.txt" />
+    <EmbeddedResource Include="Assets\Licenses\.NET Runtime.txt" />
+    <EmbeddedResource Include="Assets\Licenses\Application Insights.txt" />
+    <EmbeddedResource Include="Assets\Licenses\JetBrains.Annotations.txt" />
+    <EmbeddedResource Include="Assets\Licenses\Json.NET.txt" />
+    <EmbeddedResource Include="Assets\Licenses\Livet.txt" />
+    <EmbeddedResource Include="Assets\Licenses\MetroRadiance.txt" />
+    <EmbeddedResource Include="Assets\Licenses\Mio.txt" />
+    <EmbeddedResource Include="Assets\Licenses\ReactiveProperty.txt" />
+    <EmbeddedResource Include="Assets\Licenses\Rx.NET.txt" />
+    <EmbeddedResource Include="Assets\Licenses\UriTemplate.Core.txt" />
+    <EmbeddedResource Include="Assets\Licenses\Windows Community Toolkit.txt" />
+    <EmbeddedResource Include="Assets\Licenses\XamlBehaviors for WPF.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="Application.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
+    <PackageReference Include="LivetCask" Version="3.2.3.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.16.0" />
+    <PackageReference Include="Mio" Version="2.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="ReactiveProperty.WPF" Version="7.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MetroRadiance\MetroRadiance\MetroRadiance.csproj" />
+    <ProjectReference Include="..\MetroTrilithon\MetroTrilithon.Desktop\MetroTrilithon.Desktop.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\UserSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>UserSettings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Update="Properties\UserSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UserSettings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
