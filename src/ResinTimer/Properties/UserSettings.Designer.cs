@@ -15,11 +15,59 @@ namespace ResinTimer.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class UserSettings : global::System.Configuration.ApplicationSettingsBase {
         
-        private static ResinTimer.Properties.UserSettings defaultInstance = ((ResinTimer.Properties.UserSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ResinTimer.Properties.UserSettings())));
+        private static UserSettings defaultInstance = ((UserSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new UserSettings())));
         
-        public static ResinTimer.Properties.UserSettings Default {
+        public static UserSettings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("160")]
+        public int MaxResin {
+            get {
+                return ((int)(this["MaxResin"]));
+            }
+            set {
+                this["MaxResin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int MinResin {
+            get {
+                return ((int)(this["MinResin"]));
+            }
+            set {
+                this["MinResin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowInTaskbar {
+            get {
+                return ((bool)(this["ShowInTaskbar"]));
+            }
+            set {
+                this["ShowInTaskbar"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TopMost {
+            get {
+                return ((bool)(this["TopMost"]));
+            }
+            set {
+                this["TopMost"] = value;
             }
         }
     }

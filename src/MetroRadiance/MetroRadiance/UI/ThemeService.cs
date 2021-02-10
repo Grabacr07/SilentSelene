@@ -24,9 +24,9 @@ namespace MetroRadiance.UI
 
         #endregion
 
-        private static readonly UriTemplateEx _themeTemplate = new UriTemplateEx(@"Themes/{theme}.xaml");
-        private static readonly UriTemplateEx _accentTemplate = new UriTemplateEx(@"Themes/Accents/{accent}.xaml");
-        private static readonly Uri _templateBaseUri = new Uri(@"pack://application:,,,/MetroRadiance;component");
+        private static readonly UriTemplateEx _themeTemplate = new UriTemplateEx(@"MetroRadiance;component/Themes/{theme}.xaml");
+        private static readonly UriTemplateEx _accentTemplate = new UriTemplateEx(@"MetroRadiance;component/Themes/Accents/{accent}.xaml");
+        private static readonly Uri _templateBaseUri = new Uri(@"pack://application:,,,/");
 
         private Dispatcher? _dispatcher;
         private IDisposable? _windowsAccentListener;
@@ -231,6 +231,8 @@ namespace MetroRadiance.UI
                 : theme.Specified;
             if (specified == null) throw new ArgumentException($"Invalid theme value '{theme}'.");
 
+            var source = CreateThemeResourceUri(specified.Value);
+
             return new ResourceDictionary
             {
                 Source = CreateThemeResourceUri(specified.Value),
@@ -316,7 +318,7 @@ namespace MetroRadiance.UI
         /// <returns><paramref name="uri"/> がテーマのリソースを指す URI の場合は true、それ以外の場合は false。</returns>
         private static bool CheckThemeResourceUri(Uri uri)
         {
-            return _themeTemplate.Match(_templateBaseUri, uri) != null;
+            return uri.IsAbsoluteUri && _themeTemplate.Match(_templateBaseUri, uri) != null;
         }
 
         /// <summary>
@@ -325,7 +327,7 @@ namespace MetroRadiance.UI
         /// <returns><paramref name="uri"/> がアクセント カラーのリソースを指す URI の場合は true、それ以外の場合は false。</returns>
         private static bool CheckAccentResourceUri(Uri uri)
         {
-            return _accentTemplate.Match(_templateBaseUri, uri) != null;
+            return uri.IsAbsoluteUri && _accentTemplate.Match(_templateBaseUri, uri) != null;
         }
 
         private static Uri CreateThemeResourceUri(Theme.SpecifiedColor theme)

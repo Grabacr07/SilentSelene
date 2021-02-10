@@ -36,6 +36,7 @@
     <None Remove="Assets\Licenses\UriTemplate.Core.txt" />
     <None Remove="Assets\Licenses\Windows Community Toolkit.txt" />
     <None Remove="Assets\Licenses\XamlBehaviors for WPF.txt" />
+    <None Remove="ResinTimer.csproj.DotSettings" />
     <EmbeddedResource Include="Assets\Licenses\.NET Core WPF.txt" />
     <EmbeddedResource Include="Assets\Licenses\.NET Runtime.txt" />
     <EmbeddedResource Include="Assets\Licenses\Application Insights.txt" />

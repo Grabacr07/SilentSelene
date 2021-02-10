@@ -7,7 +7,6 @@
              xmlns:utils="http://schemes.grabacr.net/winfx/2015/personal/controls"
              xmlns:props="clr-namespace:ResinTimer.Properties"
              xmlns:bindings="clr-namespace:ResinTimer.UI.Bindings"
-             xmlns:properties1="clr-namespace:ResinTimer.Properties"
              xmlns:controls="clr-namespace:ResinTimer.UI.Controls"
              Background="{DynamicResource ActiveBackgroundBrushKey}"
              FontSize="14"
@@ -30,17 +29,17 @@
         <StackPanel DockPanel.Dock="Top"
                     TextBlock.FontFamily="Yu Gothic UI Light">
             <TextBlock DockPanel.Dock="Top"
-                       Text="{Binding Source={x:Static properties1:AssemblyInfo.Title}, Mode=OneTime}"
+                       Text="{Binding Source={x:Static props:AssemblyInfo.Title}, Mode=OneTime}"
                        FontSize="48"
                        Margin="24,0" />
 
             <TextBlock DockPanel.Dock="Top"
                        FontSize="20"
                        Margin="24,16">
-                <Run Text="{Binding Source={x:Static properties1:AssemblyInfo.Description}, Mode=OneTime}" />
+                <Run Text="{Binding Source={x:Static props:AssemblyInfo.Description}, Mode=OneTime}" />
                 <LineBreak />
                 <Run
-                    Text="{Binding Source={x:Static properties1:AssemblyInfo.VersionString}, StringFormat='Version {0}', Mode=OneTime}" />
+                    Text="{Binding Source={x:Static props:AssemblyInfo.VersionString}, StringFormat='Version {0}', Mode=OneTime}" />
             </TextBlock>
 
             <TextBlock DockPanel.Dock="Bottom"
@@ -52,7 +51,7 @@
                 </controls:OpenUriHyperlink>
                 <LineBreak />
                 <LineBreak />
-                <Run Text="{Binding Source={x:Static properties1:AssemblyInfo.Copyright}, Mode=OneTime}" />
+                <Run Text="{Binding Source={x:Static props:AssemblyInfo.Copyright}, Mode=OneTime}" />
                 <LineBreak />
                 <Run Text="This application is OSS released under the" />
                 <controls:OpenUriHyperlink Uri="https://github.com/Grabacr07/ResinTimer/blob/master/LICENSE.md">
@@ -70,7 +69,7 @@
                        FontSize="32"
                        Margin="24,24,24,8" />
 
-            <ItemsControl ItemsSource="{Binding Source={x:Static properties1:LicenseInfo.All}, Mode=OneTime}">
+            <ItemsControl ItemsSource="{Binding Source={x:Static props:LicenseInfo.All}, Mode=OneTime}">
                 <ItemsControl.Template>
                     <ControlTemplate TargetType="{x:Type ItemsControl}">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using MetroRadiance.UI;
 using MetroTrilithon.Threading.Tasks;
 using MetroTrilithon.UI;
 using ResinTimer.Properties;
@@ -42,6 +43,7 @@ namespace ResinTimer
 
             TaskLog.Occured += (sender, args) => this.Tracker.TrackException(sender ?? typeof(TaskLog), args.Exception);
             UIDispatcher.Instance = this.Dispatcher;
+            ThemeService.Current.Register(this, Theme.Light, Accent.Blue);
 
             this.DispatcherUnhandledException += (sender, args) =>
             {

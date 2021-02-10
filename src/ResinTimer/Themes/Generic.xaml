@@ -2,6 +2,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/ResinTimer;component/UI/Controls/MainContentHeader.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ResinTimer;component/UI/Controls/RadialProgressBar.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

@@ -9,5 +9,11 @@ namespace ResinTimer.UI.Bindings
         {
             this.Title = AssemblyInfo.Title;
         }
+
+        public override void Close()
+        {
+            base.Close();
+            UserSettings.Default.Save();
+        }
     }
 }
