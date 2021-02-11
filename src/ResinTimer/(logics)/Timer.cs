@@ -45,11 +45,11 @@ namespace ResinTimer
             }
             else
             {
-                this.Reset(this.MinResin.Value);
+                this.Reset(this.MinResin.Value, false);
             }
         }
 
-        public void Reset(int resin, bool save = false)
+        public void Reset(int resin, bool save = true)
         {
             var minutes = (this.MaxResin.Value - resin).EnsureRange(this.MinResin.Value, this.MaxResin.Value) * MinutesOfResin;
             var time = DateTimeOffset.Now.AddMinutes(minutes);

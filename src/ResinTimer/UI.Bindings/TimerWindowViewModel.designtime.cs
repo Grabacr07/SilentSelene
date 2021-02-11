@@ -17,7 +17,7 @@ namespace ResinTimer.UI.Bindings
         public DesignTimeTimerWindowViewModel(Timer timer)
             : base(timer)
         {
-            timer.Reset(new Random().Next(timer.MinResin.Value, timer.MaxResin.Value));
+            timer.Reset(new Random().Next(timer.MinResin.Value, timer.MaxResin.Value), false);
         }
     }
 }

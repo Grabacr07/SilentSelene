@@ -56,7 +56,7 @@ namespace ResinTimer.UI.Bindings
         {
             if (int.TryParse(this.NewResin.Value, out var resin))
             {
-                this.Timer.Reset(resin, true);
+                this.Timer.Reset(resin);
             }
 
             this.NewResin.Value = "";
