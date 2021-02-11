@@ -138,7 +138,7 @@
                     <TextBlock Text="天然樹脂回復時刻"
                                Foreground="{DynamicResource ForegroundBrushKey}"
                                FontSize="16" />
-                    <TextBlock Text="{Binding Timer.OverflowingTime.Value, StringFormat={}{0:MM/dd HH\\:mm\\:ss}, ConverterCulture=ja-jP}"
+                    <TextBlock Text="{Binding Timer.OverflowingTime.Value, StringFormat={}{0:M/dd HH\\:mm\\:ss}, ConverterCulture=ja-jP}"
                                Foreground="{DynamicResource ActiveForegroundBrushKey}"
                                FontSize="24" />
                 </StackPanel>

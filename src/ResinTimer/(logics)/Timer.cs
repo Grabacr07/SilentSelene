@@ -35,9 +35,6 @@ namespace ResinTimer
             this.MaxResin = UserSettings.Default.ToReactivePropertyAsSynchronized(x => x.MaxResin);
             this.MinResin = UserSettings.Default.ToReactivePropertyAsSynchronized(x => x.MinResin);
             
-            this._systemTimer.Elapsed += (sender, args) => this.Tick(new DateTimeOffset(args.SignalTime));
-            this._systemTimer.Start();
-
             var latest = UserSettings.Default.LatestOverflowTime;
             if (latest > DateTimeOffset.Now)
             {
@@ -47,6 +44,9 @@ namespace ResinTimer
             {
                 this.Reset(this.MinResin.Value, false);
             }
+
+            this._systemTimer.Elapsed += (sender, args) => this.Tick(new DateTimeOffset(args.SignalTime));
+            this._systemTimer.Start();
         }
 
         public void Reset(int resin, bool save = true)
