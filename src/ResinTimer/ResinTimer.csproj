@@ -28,7 +28,6 @@
     <None Remove="Assets\Licenses\Json.NET.txt" />
     <None Remove="Assets\Licenses\Livet.txt" />
     <None Remove="Assets\Licenses\MetroRadiance.txt" />
-    <None Remove="Assets\Licenses\Mio.txt" />
     <None Remove="Assets\Licenses\ReactiveProperty.txt" />
     <None Remove="Assets\Licenses\Rx.NET.txt" />
     <None Remove="Assets\Licenses\UriTemplate.Core.txt" />
@@ -42,7 +41,6 @@
     <EmbeddedResource Include="Assets\Licenses\Json.NET.txt" />
     <EmbeddedResource Include="Assets\Licenses\Livet.txt" />
     <EmbeddedResource Include="Assets\Licenses\MetroRadiance.txt" />
-    <EmbeddedResource Include="Assets\Licenses\Mio.txt" />
     <EmbeddedResource Include="Assets\Licenses\ReactiveProperty.txt" />
     <EmbeddedResource Include="Assets\Licenses\Rx.NET.txt" />
     <EmbeddedResource Include="Assets\Licenses\UriTemplate.Core.txt" />
@@ -58,7 +56,6 @@
     <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
     <PackageReference Include="LivetCask" Version="3.2.3.1" />
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.16.0" />
-    <PackageReference Include="Mio" Version="2.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="ReactiveProperty.WPF" Version="7.6.1" />
   </ItemGroup>
