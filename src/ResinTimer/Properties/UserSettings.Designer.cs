@@ -70,5 +70,17 @@ namespace ResinTimer.Properties {
                 this["TopMost"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000-01-01")]
+        public global::System.DateTimeOffset LatestOverflowTime {
+            get {
+                return ((global::System.DateTimeOffset)(this["LatestOverflowTime"]));
+            }
+            set {
+                this["LatestOverflowTime"] = value;
+            }
+        }
     }
 }

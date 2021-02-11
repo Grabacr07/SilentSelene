@@ -36,7 +36,6 @@ namespace ResinTimer.UI.Bindings
             this.Title = AssemblyInfo.Title;
 
             this.Timer = timer;
-            this.Timer.Reset(0);
             this.NewResin = new ReactiveProperty<string>();
             this.IsOverflow = timer.RemainingTime
                 .Select(x => x.TotalSeconds < 0)
@@ -57,7 +56,7 @@ namespace ResinTimer.UI.Bindings
         {
             if (int.TryParse(this.NewResin.Value, out var resin))
             {
-                this.Timer.Reset(resin);
+                this.Timer.Reset(resin, true);
             }
 
             this.NewResin.Value = "";

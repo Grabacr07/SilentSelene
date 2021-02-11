@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reactive.Linq;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 using ResinTimer.Functions;
@@ -39,13 +38,28 @@ namespace ResinTimer
             this._systemTimer.Elapsed += (sender, args) => this.Tick(new DateTimeOffset(args.SignalTime));
             this._systemTimer.Start();
 
-            this.Reset(this.MaxResin.Value);
+            var latest = UserSettings.Default.LatestOverflowTime;
+            if (latest > DateTimeOffset.Now)
+            {
+                this._overflowingTime.Value = latest;
+            }
+            else
+            {
+                this.Reset(this.MinResin.Value);
+            }
         }
 
-        public void Reset(int resin)
+        public void Reset(int resin, bool save = false)
         {
             var minutes = (this.MaxResin.Value - resin).EnsureRange(this.MinResin.Value, this.MaxResin.Value) * MinutesOfResin;
-            this._overflowingTime.Value = DateTimeOffset.Now.AddMinutes(minutes);
+            var time = DateTimeOffset.Now.AddMinutes(minutes);
+            this._overflowingTime.Value = time;
+
+            if (save)
+            {
+                UserSettings.Default.LatestOverflowTime = time;
+                UserSettings.Default.Save();
+            }
         }
 
         private void Tick(DateTimeOffset signalTime)
