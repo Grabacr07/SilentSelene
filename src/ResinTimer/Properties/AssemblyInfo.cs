@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 
 [assembly: ComVisible(false)]
-[assembly: Guid("00000000-0000-0000-0000-000000000000")] // ToDo: assembly: Guid
+[assembly: Guid("1E10C7CD-8C05-4BC7-A58B-BB5ED4AC2DFA")]
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
 namespace ResinTimer.Properties
