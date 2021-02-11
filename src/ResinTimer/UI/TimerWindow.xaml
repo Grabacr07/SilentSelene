@@ -119,10 +119,18 @@
                                             Margin="2" />
                     <Border Width="4"
                             DockPanel.Dock="Right" />
-                    <metro:PromptTextBox Text="{Binding NewResin.Value, Mode=TwoWay}"
+                    <metro:PromptTextBox Text="{Binding NewResin.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          Prompt="樹脂の入力"
                                          FontSize="16"
-                                         Margin="2" />
+                                         Margin="2">
+                        <b:Interaction.Triggers>
+                            <b:KeyTrigger Key="Return"
+                                          FiredOn="KeyDown">
+                                <livet:LivetCallMethodAction MethodTarget="{Binding}"
+                                                             MethodName="Update" />
+                            </b:KeyTrigger>
+                        </b:Interaction.Triggers>
+                    </metro:PromptTextBox>
                 </DockPanel>
                 <Border Height="8" />
 
@@ -130,7 +138,7 @@
                     <TextBlock Text="天然樹脂回復時刻"
                                Foreground="{DynamicResource ForegroundBrushKey}"
                                FontSize="16" />
-                    <TextBlock Text="{Binding Timer.OverflowingTime.Value, StringFormat={}{0:MM/dd hh\\:mm\\:ss}, ConverterCulture=ja-jP}"
+                    <TextBlock Text="{Binding Timer.OverflowingTime.Value, StringFormat={}{0:MM/dd HH\\:mm\\:ss}, ConverterCulture=ja-jP}"
                                Foreground="{DynamicResource ActiveForegroundBrushKey}"
                                FontSize="24" />
                 </StackPanel>
