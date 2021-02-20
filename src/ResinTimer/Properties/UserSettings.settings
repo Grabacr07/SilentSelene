@@ -17,5 +17,8 @@
     <Setting Name="LatestOverflowTime" Type="System.DateTimeOffset" Scope="User">
       <Value Profile="(Default)">2000-01-01</Value>
     </Setting>
+    <Setting Name="OverflowResin" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">160</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

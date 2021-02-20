@@ -82,5 +82,17 @@ namespace ResinTimer.Properties {
                 this["LatestOverflowTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("160")]
+        public int OverflowResin {
+            get {
+                return ((int)(this["OverflowResin"]));
+            }
+            set {
+                this["OverflowResin"] = value;
+            }
+        }
     }
 }

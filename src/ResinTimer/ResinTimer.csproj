@@ -17,6 +17,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="Windows">
+      <HintPath>$(MSBuildProgramFiles32)\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\LICENSE.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -58,6 +65,7 @@
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.16.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="ReactiveProperty.WPF" Version="7.6.1" />
+    <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
