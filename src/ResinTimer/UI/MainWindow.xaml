@@ -21,6 +21,8 @@
         </b:EventTrigger>
         <b:EventTrigger EventName="Closed">
             <livet:DataContextDisposeAction />
+            <livet:LivetCallMethodAction MethodTarget="{Binding}"
+                                         MethodName="Close" />
         </b:EventTrigger>
     </b:Interaction.Triggers>
 

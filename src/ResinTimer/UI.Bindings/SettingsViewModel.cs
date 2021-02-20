@@ -37,5 +37,12 @@ namespace ResinTimer.UI.Bindings
                         ? i.EnsureRange(UserSettings.Default.MinResin, UserSettings.Default.MaxResin)
                         : UserSettings.Default.MaxResin);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            UserSettings.Default.Save();
+        }
     }
 }
