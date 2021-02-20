@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reactive.Linq;
-using System.Windows;
 using JetBrains.Annotations;
 using Livet.Messaging;
 using MetroRadiance.UI;
@@ -15,12 +13,10 @@ namespace ResinTimer.UI.Bindings
     public class TimerWindowViewModel : WindowViewModel
     {
         public const string ShowOptionWindowMessageKey = nameof(ShowOptionWindowMessageKey);
-        
+
         public Timer Timer { get; }
 
         public IReactiveProperty<string> NewResin { get; }
-
-        public IReadOnlyReactiveProperty<bool> IsOverflow { get; }
 
         public IReadOnlyReactiveProperty<bool> ShowInTaskbar { get; }
 
@@ -37,13 +33,10 @@ namespace ResinTimer.UI.Bindings
 
             this.Timer = timer;
             this.NewResin = new ReactiveProperty<string>();
-            this.IsOverflow = timer.RemainingTime
-                .Select(x => x.TotalSeconds < 0)
-                .ToReadOnlyReactiveProperty();
 
-            this.IsOverflow
+            timer.IsOverflow
                 .Subscribe(x => ThemeService.Current.ChangeAccent(x ? Accent.Orange : Accent.Blue));
-            
+
             this.ShowInTaskbar = UserSettings.Default
                 .ToReactivePropertyAsSynchronized(x => x.ShowInTaskbar);
 
@@ -68,6 +61,12 @@ namespace ResinTimer.UI.Bindings
             var binding = new MainWindowViewModel();
             var message = new TransitionMessage(binding, ShowOptionWindowMessageKey);
             this.Messenger.Raise(message);
+        }
+
+        [UsedImplicitly]
+        public void Increase(string value)
+        {
+            if (int.TryParse(value, out var i)) this.Timer.Increase(i);
         }
     }
 }

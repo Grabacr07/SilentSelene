@@ -14,8 +14,8 @@
                    Title="{Binding Title}"
                    Width="370"
                    Height="160"
+                   FontSize="14"
                    HasDefaultCaptionBar="False"
-                   IsAcrylic="True"
                    IsRestoringWindowPlacement="True"
                    ResizeMode="NoResize"
                    ShowInTaskbar="{Binding ShowInTaskbar.Value}"
@@ -107,15 +107,24 @@
 
         <StackPanel Grid.Row="1"
                     Grid.Column="1"
-                    Margin="4"
-                    VerticalAlignment="Center">
+                    Margin="4">
             <StackPanel DockPanel.Dock="Bottom"
                         Width="200">
+                <DockPanel Margin="4">
+                    <TextBlock Text="回復"
+                               Foreground="{DynamicResource ForegroundBrushKey}"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               Margin="0,3,8,0" />
+                    <TextBlock Text="{Binding Timer.OverflowingTime.Value, StringFormat={}{0:M/dd HH\\:mm\\:ss}, ConverterCulture=ja-jP}"
+                               Foreground="{DynamicResource ActiveForegroundBrushKey}"
+                               FontSize="24" />
+                </DockPanel>
+
                 <DockPanel Margin="2">
                     <utils:CallMethodButton DockPanel.Dock="Right"
                                             MethodName="Update"
                                             controls:Iconic.Content="&#xE777;|更新"
-                                            FontSize="16"
                                             Margin="2" />
                     <Border Width="4"
                             DockPanel.Dock="Right" />
@@ -132,16 +141,28 @@
                         </b:Interaction.Triggers>
                     </metro:PromptTextBox>
                 </DockPanel>
-                <Border Height="8" />
 
-                <StackPanel Margin="4">
-                    <TextBlock Text="天然樹脂回復時刻"
-                               Foreground="{DynamicResource ForegroundBrushKey}"
-                               FontSize="16" />
-                    <TextBlock Text="{Binding Timer.OverflowingTime.Value, StringFormat={}{0:M/dd HH\\:mm\\:ss}, ConverterCulture=ja-jP}"
-                               Foreground="{DynamicResource ActiveForegroundBrushKey}"
-                               FontSize="24" />
-                </StackPanel>
+                <UniformGrid Rows="1"
+                             Margin="0">
+                    <Panel.Resources>
+                        <Style TargetType="{x:Type utils:CallMethodButton}">
+                            <Setter Property="Padding"
+                                    Value="4" />
+                            <Setter Property="Margin"
+                                    Value="4" />
+                            <Setter Property="MethodName"
+                                    Value="Increase" />
+                        </Style>
+                    </Panel.Resources>
+                    <utils:CallMethodButton Content="-60"
+                                            MethodParameter="-60" />
+                    <utils:CallMethodButton Content="-40"
+                                            MethodParameter="-40" />
+                    <utils:CallMethodButton Content="-20"
+                                            MethodParameter="-20" />
+                    <utils:CallMethodButton Content="+60"
+                                            MethodParameter="60" />
+                </UniformGrid>
             </StackPanel>
         </StackPanel>
     </Grid>
