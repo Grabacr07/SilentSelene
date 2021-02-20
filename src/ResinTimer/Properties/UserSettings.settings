@@ -20,5 +20,8 @@
     <Setting Name="OverflowResin" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">160</Value>
     </Setting>
+    <Setting Name="NotifyOverflow" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

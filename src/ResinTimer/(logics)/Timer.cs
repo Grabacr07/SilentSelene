@@ -50,9 +50,10 @@ namespace ResinTimer
             this.MinResin = UserSettings.Default.ToReactivePropertyAsSynchronized(x => x.MinResin);
 
             this.IsOverflow = this._currentResin
-                .CombineLatest(UserSettings.Default
-                    .ToReactivePropertyAsSynchronized(x => x.OverflowResin)
-                    .AddTo(this._compositeDisposable))
+                .CombineLatest(
+                    UserSettings.Default
+                        .ToReactivePropertyAsSynchronized(x => x.OverflowResin)
+                        .AddTo(this._compositeDisposable))
                 .Select<(int current, int overflow), bool>(x => x.current >= x.overflow)
                 .ToReadOnlyReactiveProperty();
 
@@ -102,9 +103,12 @@ namespace ResinTimer
 
         private void NotifyOverflow()
         {
-            this._notifier.Notify(
-                "天然樹脂が回復しました",
-                $"現在の天然樹脂は {this._currentResin.Value} です。早く使ってね！");
+            if (UserSettings.Default.NotifyOverflow)
+            {
+                this._notifier.Notify(
+                    "天然樹脂が回復しました",
+                    $"現在の天然樹脂は {this._currentResin.Value} です。早く使ってね！");
+            }
         }
 
         public void Dispose()

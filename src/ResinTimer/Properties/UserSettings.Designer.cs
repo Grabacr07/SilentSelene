@@ -94,5 +94,17 @@ namespace ResinTimer.Properties {
                 this["OverflowResin"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool NotifyOverflow {
+            get {
+                return ((bool)(this["NotifyOverflow"]));
+            }
+            set {
+                this["NotifyOverflow"] = value;
+            }
+        }
     }
 }

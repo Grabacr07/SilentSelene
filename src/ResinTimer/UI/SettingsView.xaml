@@ -53,10 +53,18 @@
                 <TextBlock Text="天然樹脂に関するデスクトップ通知を設定します。"
                            Style="{DynamicResource DescriptionTextStyleKey}" />
                 <StackPanel Style="{DynamicResource H3ElementBlockStyleKey}">
-                    <CheckBox IsChecked="False"
-                              Content="天然樹脂が回復したら通知を表示する"
-                              Margin="0,4"
-                              IsEnabled="False" />
+                    <CheckBox IsChecked="{Binding NotifyOverflow.Value, Mode=TwoWay}"
+                              Content="天然樹脂が回復したらデスクトップに通知する"
+                              Margin="0,4" />
+                    <StackPanel IsEnabled="{Binding NotifyOverflow.Value, Mode=OneWay}"
+                                Margin="22, 0">
+                        <TextBlock Text="樹脂がこの値になったときに通知:" />
+                        <metro:PromptTextBox Text="{Binding OverflowResin.Value, Mode=TwoWay}"
+                                             Prompt="{Binding MaxResin, Source={x:Static props:UserSettings.Default}}"
+                                             Width="100"
+                                             Margin="0, 4"
+                                             HorizontalAlignment="Left" />
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
