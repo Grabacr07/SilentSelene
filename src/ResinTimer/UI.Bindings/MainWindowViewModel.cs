@@ -7,7 +7,7 @@ namespace ResinTimer.UI.Bindings
     {
         public MainWindowViewModel()
         {
-            this.Title = AssemblyInfo.Title;
+            this.Title = AssemblyInfo.Product;
         }
 
         public override void Close()

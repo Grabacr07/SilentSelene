@@ -5,6 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
+    <AssemblyTitle>ResinTimer</AssemblyTitle>
+    <Product>天然樹脂タイマー</Product>
     <Authors>Manato Kameya</Authors>
     <Company>grabacr.net</Company>
     <Copyright>Copyright © 2021 Manato Kameya</Copyright>

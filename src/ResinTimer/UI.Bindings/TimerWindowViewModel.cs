@@ -29,7 +29,7 @@ namespace ResinTimer.UI.Bindings
 
         public TimerWindowViewModel(Timer timer)
         {
-            this.Title = AssemblyInfo.Title;
+            this.Title = AssemblyInfo.Product;
 
             this.Timer = timer;
             this.NewResin = new ReactiveProperty<string>();

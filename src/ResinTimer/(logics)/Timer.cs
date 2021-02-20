@@ -19,7 +19,7 @@ namespace ResinTimer
         private readonly ReactiveProperty<DateTimeOffset> _overflowingTime = new ReactiveProperty<DateTimeOffset>();
         private readonly ReactiveProperty<TimeSpan> _remainingTime = new ReactiveProperty<TimeSpan>();
         private readonly ReactiveProperty<int> _currentResin = new ReactiveProperty<int>();
-        private readonly SystemTimer _systemTimer = new SystemTimer(1000);
+        private readonly SystemTimer _systemTimer = new SystemTimer(500);
         private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();
 
         public IReadOnlyReactiveProperty<int> MaxResin { get; }
