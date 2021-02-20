@@ -73,6 +73,7 @@ namespace ResinTimer.UI.Hosting
             if (value == null) return;
 
             // SelectedItem に null 突っ込むと選択解除される ListBox の仕様を利用して、
+            // MainContentHost の Current 依存関係プロパティとのバインディングによって
             // 複数の ListBox で SelectedItem のバインディング ソースを共用する
             if (category.Contents.Any(x => x == value))
             {
