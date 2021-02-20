@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace ResinTimer.UI.Controls
+namespace ResinTimer.UI.Hosting
 {
     public class MainContentHeader : ContentControl
     {

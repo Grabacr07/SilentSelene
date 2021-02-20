@@ -1,55 +1,107 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Reflection;
 using System.Windows;
-using MetroTrilithon.Mvvm;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace ResinTimer.UI.Hosting
 {
-    public class MainContentHost : Notifier
+    public class MainContentHost : ContentControl
     {
-        public static MainContentHost Instance { get; }
-            = new MainContentHost();
-        
-        public ObservableCollection<MainContentCategoryHost> Categories { get; }
-
-        #region Current notification property
-
-        private MainContent? _Current;
-
-        public MainContent? Current
+        static MainContentHost()
         {
-            get => this._Current;
-            set
-            {
-                if (this._Current == value) return;
+            DefaultStyleKeyProperty.OverrideMetadata(
+                typeof(MainContentHost),
+                new FrameworkPropertyMetadata(typeof(MainContentHost)));
+        }
 
-                // SelectedItem に null 突っ込むと選択解除される ListBox の仕様を利用して、
-                // 複数の ListBox で SelectedItem のバインディング ソースを共用する
-                this._Current = null;
-                this.RaisePropertyChanged();
+        private readonly SerialDisposable _windowCloseListener = new SerialDisposable();
 
-                if (value != null)
-                {
-                    this._Current = value;
-                    this.RaisePropertyChanged();
-                }
-            }
+        #region Categories dependency property
+
+        public static readonly DependencyProperty CategoriesProperty
+            = DependencyProperty.Register(
+                nameof(Categories),
+                typeof(IReadOnlyList<MainContentCategory>),
+                typeof(MainContentHost),
+                new PropertyMetadata(default(IReadOnlyList<MainContentCategory>)));
+
+        public IReadOnlyList<MainContentCategory> Categories
+        {
+            get => (IReadOnlyList<MainContentCategory>)this.GetValue(CategoriesProperty);
+            set => this.SetValue(CategoriesProperty, value);
         }
 
         #endregion
 
-        private MainContentHost()
+        #region Current dependency property
+
+        public static readonly DependencyProperty CurrentProperty
+            = DependencyProperty.Register(
+                nameof(Current),
+                typeof(MainContent),
+                typeof(MainContentHost),
+                new PropertyMetadata(default(MainContent), HandleCurrentPropertyChanged));
+
+        public MainContent Current
+        {
+            get => (MainContent)this.GetValue(CurrentProperty);
+            set => this.SetValue(CurrentProperty, value);
+        }
+
+        private static void HandleCurrentPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (!(d is MainContentHost host)) return;
+
+            foreach (var category in host.Categories) category.SelectedContent = (MainContent)e.NewValue;
+        }
+
+        #endregion
+
+        #region HeaderWidth dependency property
+
+        public static readonly DependencyProperty HeaderWidthProperty
+            = DependencyProperty.Register(
+                nameof(HeaderWidth),
+                typeof(GridLength),
+                typeof(MainContentHost),
+                new PropertyMetadata(default(GridLength)));
+
+        public GridLength HeaderWidth
+        {
+            get => (GridLength)this.GetValue(HeaderWidthProperty);
+            set => this.SetValue(HeaderWidthProperty, value);
+        }
+
+        #endregion
+
+        public MainContentHost()
         {
             var categories = this.CreateContents()
                 .GroupBy(x => Deconstruct(x.Category))
                 .OrderBy(x => x.Key.order)
-                .Select(x => new MainContentCategoryHost(x.Key.name, x.OrderBy(y => y.Order)));
+                .Select(x => new MainContentCategory(this, x.Key.name, x.OrderBy(y => y.Order)));
 
-            this.Categories = new ObservableCollection<MainContentCategoryHost>(categories);
+            this.Categories = new List<MainContentCategory>(categories);
             this.Current = this.Categories.First().Contents.First();
+            
+            this.SetBinding(ContentProperty, new Binding()
+            {
+                Source = this,
+                Path = new PropertyPath($"{nameof(this.Current)}.{nameof(this.Current.Instance)}"),
+            });
+
+            this.Loaded += (sender, args) =>
+            {
+                var window = Window.GetWindow(this);
+                if (window == null) return;
+
+                this._windowCloseListener.Disposable = Disposable.Create(() => window.Closed -= HandleWindowClosed);
+                window.Closed += HandleWindowClosed;
+            };
 
             static (int order, string name) Deconstruct(string name)
             {
@@ -58,12 +110,25 @@ namespace ResinTimer.UI.Hosting
                     ? (int.MaxValue, name)
                     : (order, values[1]);
             }
+
+            void HandleWindowClosed(object? sender, EventArgs e)
+            {
+                foreach (var disposable in this.Categories
+                    .SelectMany(x => x.Contents)
+                    .Select(x => x.Instance)
+                    .OfType<FrameworkElement>()
+                    .Select(x => x.DataContext)
+                    .OfType<IDisposable>())
+                {
+                    disposable?.Dispose();
+                }
+            }
         }
 
         public IEnumerable<MainContent<T>> EnumerateContents<T>()
             => this.Categories
                 .SelectMany(x => x.Contents)
-                .Where(x => x.Instance is FrameworkElement element && element.DataContext is T)
+                .Where(x => x.Instance is FrameworkElement { DataContext: T _ })
                 .Select(x => new MainContent<T>(x, (T)((FrameworkElement)x.Instance).DataContext));
 
         private IEnumerable<MainContent> CreateContents()

@@ -34,7 +34,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="{Binding HeaderWidth, ElementName=MainContentHost}" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -43,106 +43,10 @@
                 Grid.Column="1"
                 Background="{DynamicResource ActiveBackgroundBrushKey}" />
 
-        <ScrollViewer Grid.Row="1"
-                      Grid.Column="0"
-                      VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding Source={x:Static hosting:MainContentHost.Instance}, Path=Categories}">
-                <ItemsControl.Template>
-                    <ControlTemplate>
-                        <StackPanel IsItemsHost="True"
-                                    FocusVisualStyle="{x:Null}" />
-                    </ControlTemplate>
-                </ItemsControl.Template>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type hosting:MainContentCategoryHost}">
-                        <StackPanel>
-                            <TextBlock Text="{Binding CategoryName}"
-                                       FontSize="14"
-                                       FontWeight="Bold"
-                                       Margin="16,32,16,8" />
-                            <ListBox ItemsSource="{Binding Contents}"
-                                     SelectedItem="{Binding Source={x:Static hosting:MainContentHost.Instance}, Path=Current}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-                <ItemsControl.Resources>
-                    <ResourceDictionary>
-                        <Style TargetType="{x:Type ListBox}">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type ListBox}">
-                                        <StackPanel IsItemsHost="True"
-                                                    FocusVisualStyle="{x:Null}" />
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="ItemContainerStyle">
-                                <Setter.Value>
-                                    <Style TargetType="{x:Type ListBoxItem}">
-                                        <Setter Property="Background"
-                                                Value="Transparent" />
-                                        <Setter Property="Foreground"
-                                                Value="{DynamicResource ActiveForegroundBrushKey}" />
-                                        <Setter Property="Height"
-                                                Value="48" />
-                                        <Setter Property="FocusVisualStyle"
-                                                Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                                    <Grid>
-                                                        <Border x:Name="Background"
-                                                                BorderThickness="0.99"
-                                                                BorderBrush="{DynamicResource ActiveBorderBrushKey}"
-                                                                Background="{DynamicResource ActiveBackgroundBrushKey}"
-                                                                Opacity="0.0" />
-                                                        <DockPanel>
-                                                            <Border x:Name="SelectionMark"
-                                                                    Width="4"
-                                                                    Height="24"
-                                                                    Background="{DynamicResource AccentBrushKey}"
-                                                                    Visibility="Hidden" />
-                                                            <ContentPresenter />
-                                                        </DockPanel>
-                                                    </Grid>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsMouseOver"
-                                                                 Value="True">
-                                                            <Setter TargetName="Background"
-                                                                    Property="Opacity"
-                                                                    Value="0.4" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsSelected"
-                                                                 Value="True">
-                                                            <Setter TargetName="SelectionMark"
-                                                                    Property="Visibility"
-                                                                    Value="Visible" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="ItemTemplate">
-                                <Setter.Value>
-                                    <DataTemplate DataType="{x:Type hosting:MainContent}">
-                                        <ContentControl Content="{Binding Header}"
-                                                        FocusVisualStyle="{x:Null}" />
-                                    </DataTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </ResourceDictionary>
-                </ItemsControl.Resources>
-            </ItemsControl>
-        </ScrollViewer>
-
-        <ContentPresenter Grid.Row="1"
-                          Grid.Column="1"
-                          Content="{Binding Source={x:Static hosting:MainContentHost.Instance}, Path=Current.Instance}"
-                          FocusVisualStyle="{x:Null}" />
+        <hosting:MainContentHost x:Name="MainContentHost"
+                                 Grid.Row="1"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2" />
     </Grid>
 
 </metro:MetroWindow>

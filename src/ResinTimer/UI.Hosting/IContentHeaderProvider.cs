@@ -1,5 +1,4 @@
-﻿using ResinTimer.UI.Controls;
-
+﻿
 namespace ResinTimer.UI.Hosting
 {
     public interface IContentHeaderProvider

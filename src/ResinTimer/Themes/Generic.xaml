@@ -1,8 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/ResinTimer;component/UI/Controls/MainContentHeader.xaml" />
         <ResourceDictionary Source="pack://application:,,,/ResinTimer;component/UI/Controls/RadialProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ResinTimer;component/UI.Hosting/MainContentHeader.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ResinTimer;component/UI.Hosting/MainContentHost.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>
