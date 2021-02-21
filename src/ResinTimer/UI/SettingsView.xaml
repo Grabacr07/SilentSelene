@@ -39,10 +39,14 @@
                 <StackPanel Style="{DynamicResource H3ElementBlockStyleKey}">
                     <CheckBox IsChecked="{Binding TopMost.Value, Mode=TwoWay}"
                               Content="常に最前面に表示する"
-                              Margin="0,4" />
+                              Margin="0,8" />
                     <CheckBox IsChecked="{Binding ShowInTaskbar.Value, Mode=TwoWay}"
                               Content="タスク バーを表示する"
-                              Margin="0,4" />
+                              Margin="0,8" />
+                    <StackPanel IsEnabled="{Binding ShowInTaskbar.Value, Mode=OneWay, Converter={StaticResource ReverseBooleanConverter}}"
+                                Margin="22, -6,0,8">
+                        <TextBlock Text="このチェックをオフにすると、ウィンドウ最小化時はタスク トレイに格納されます。" />
+                    </StackPanel>
                 </StackPanel>
 
 
@@ -55,9 +59,9 @@
                 <StackPanel Style="{DynamicResource H3ElementBlockStyleKey}">
                     <CheckBox IsChecked="{Binding NotifyOverflow.Value, Mode=TwoWay}"
                               Content="天然樹脂が回復したらデスクトップに通知する"
-                              Margin="0,4" />
+                              Margin="0,8" />
                     <StackPanel IsEnabled="{Binding NotifyOverflow.Value, Mode=OneWay}"
-                                Margin="22, 0">
+                                Margin="22, -6,0,8">
                         <TextBlock Text="樹脂がこの値になったときに通知:" />
                         <metro:PromptTextBox Text="{Binding OverflowResin.Value, Mode=TwoWay}"
                                              Prompt="{Binding MaxResin, Source={x:Static props:UserSettings.Default}}"

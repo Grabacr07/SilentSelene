@@ -4,6 +4,7 @@
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:tb="http://www.hardcodet.net/taskbar"
                    xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
                    xmlns:metro="http://schemes.grabacr.net/winfx/2014/controls"
                    xmlns:utils="http://schemes.grabacr.net/winfx/2015/personal/controls"
@@ -17,7 +18,7 @@
                    FontSize="14"
                    HasDefaultCaptionBar="False"
                    IsRestoringWindowPlacement="True"
-                   ResizeMode="NoResize"
+                   ResizeMode="CanMinimize"
                    ShowInTaskbar="{Binding ShowInTaskbar.Value}"
                    Topmost="{Binding TopMost.Value}"
                    UseLayoutRounding="True"
@@ -61,16 +62,29 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+        <tb:TaskbarIcon x:Name="TaskbarIcon"
+                        x:FieldModifier="private"
+                        Visibility="Collapsed"
+                        IconSource="/Assets/Icons/Tasktray.ico" />
+
         <StackPanel Grid.Row="0"
                     Grid.Column="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     Margin="0, -8, -8, 0">
-            <utils:CallMethodButton MethodName="Settings"
-                                    Content="&#xF8B0;"
-                                    FontFamily="Segoe MDL2 Assets"
-                                    Style="{DynamicResource CaptionBarButtonStyleKey}" />
-            <metro:SystemButtons />
+            <metro:CaptionButton WindowAction="None"
+                                 Content="&#xF8B0;">
+                <b:Interaction.Triggers>
+                    <b:EventTrigger EventName="Click">
+                        <b:CallMethodAction TargetObject="{Binding}"
+                                            MethodName="Settings" />
+                    </b:EventTrigger>
+                </b:Interaction.Triggers>
+            </metro:CaptionButton>
+            <metro:CaptionButton WindowAction="None"
+                                 Content="&#xE921;"
+                                 Click="Hide" />
+            <metro:CaptionButton WindowAction="Close" />
         </StackPanel>
 
         <Grid Grid.Row="0"

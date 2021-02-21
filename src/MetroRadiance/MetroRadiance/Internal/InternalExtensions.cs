@@ -33,7 +33,7 @@ namespace MetroRadiance.Internal
                 case WindowAction.Minimize:
                     window.WindowState = WindowState.Minimized;
                     break;
-                case WindowAction.Normalize:
+                case WindowAction.Restore:
                     window.WindowState = WindowState.Normal;
                     break;
                 case WindowAction.OpenSystemMenu:

@@ -112,7 +112,7 @@ namespace MetroRadiance.UI.Controls
                         ? Visibility.Visible
                         : Visibility.Collapsed;
                     break;
-                case WindowAction.Normalize:
+                case WindowAction.Restore:
                     this.Visibility = this._owner.WindowState != WindowState.Normal
                         ? Visibility.Visible
                         : Visibility.Collapsed;

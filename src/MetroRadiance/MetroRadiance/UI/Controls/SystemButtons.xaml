@@ -11,7 +11,7 @@
                 <ControlTemplate TargetType="{x:Type controls:SystemButtons}">
                     <StackPanel Orientation="Horizontal">
                         <controls:CaptionButton WindowAction="Minimize" />
-                        <controls:CaptionButton WindowAction="Normalize"
+                        <controls:CaptionButton WindowAction="Restore"
                                                 d:IsHidden="True" />
                         <controls:CaptionButton WindowAction="Maximize" />
                         <controls:CaptionButton WindowAction="Close" />

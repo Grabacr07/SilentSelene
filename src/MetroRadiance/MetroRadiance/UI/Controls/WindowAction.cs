@@ -28,7 +28,7 @@ namespace MetroRadiance.UI.Controls
         /// <summary>
         /// ウィンドウを通常状態にします。
         /// </summary>
-        Normalize,
+        Restore,
 
         /// <summary>
         /// ウィンドウを最大化します。

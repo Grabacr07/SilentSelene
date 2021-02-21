@@ -82,8 +82,7 @@
                                                                 VerticalAlignment="Top"
                                                                 WindowChrome.IsHitTestVisibleInChrome="True" />
                                         <TextBlock Text="{TemplateBinding Title}"
-                                                   FontFamily="Segoe UI Light, Meiryo UI"
-                                                   FontSize="18"
+                                                   FontSize="14"
                                                    Margin="12,8" />
                                     </DockPanel>
                                 </Grid>
