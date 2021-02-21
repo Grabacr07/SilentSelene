@@ -68,24 +68,28 @@ namespace ResinTimer
             }
             else
             {
-                this.Reset(this.MinResin.Value, false);
+                this.Reset(this.MinResin.Value);
             }
+
+            this._overflowingTime
+#if DEBUG
+                .Where(x => MetroTrilithon.DebugFeatures.IsInDesignMode == false)
+#endif
+                .Subscribe(x =>
+                {
+                    UserSettings.Default.LatestOverflowTime = x;
+                    UserSettings.Default.Save();
+                });
 
             this._systemTimer.Elapsed += (sender, args) => this.Tick(new DateTimeOffset(args.SignalTime));
             this._systemTimer.Start();
         }
 
-        public void Reset(int resin, bool save = true)
+        public void Reset(int resin)
         {
             var minutes = (this.MaxResin.Value - resin).EnsureRange(this.MinResin.Value, this.MaxResin.Value) * MinutesOfResin;
             var time = DateTimeOffset.Now.AddMinutes(minutes);
             this._overflowingTime.Value = time;
-
-            if (save)
-            {
-                UserSettings.Default.LatestOverflowTime = time;
-                UserSettings.Default.Save();
-            }
         }
 
         public void Increase(int resin)
