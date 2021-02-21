@@ -12,8 +12,8 @@
                    IsAcrylic="True"
                    UseLayoutRounding="True"
                    Title="{Binding Title}"
-                   Width="1024"
-                   Height="800">
+                   Width="1200"
+                   Height="900">
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="ContentRendered">
             <livet:LivetCallMethodAction MethodTarget="{Binding}"

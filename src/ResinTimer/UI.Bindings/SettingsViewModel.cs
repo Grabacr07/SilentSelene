@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Livet;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 using ResinTimer.Functions;
+using ResinTimer.Notification;
 using ResinTimer.Properties;
 
 namespace ResinTimer.UI.Bindings
@@ -36,6 +38,12 @@ namespace ResinTimer.UI.Bindings
                     x => int.TryParse(x, out var i)
                         ? i.EnsureRange(UserSettings.Default.MinResin, UserSettings.Default.MaxResin)
                         : UserSettings.Default.MaxResin);
+        }
+
+        [UsedImplicitly]
+        public void TestNotification()
+        {
+            INotifier.Default.Notify("テスト", $"これは {AssemblyInfo.Product} の通知テストです。");
         }
 
         protected override void Dispose(bool disposing)
