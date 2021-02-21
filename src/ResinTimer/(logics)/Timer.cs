@@ -75,6 +75,7 @@ namespace ResinTimer
 #if DEBUG
                 .Where(x => MetroTrilithon.DebugFeatures.IsInDesignMode == false)
 #endif
+                .Skip(1)
                 .Subscribe(x =>
                 {
                     UserSettings.Default.LatestOverflowTime = x;

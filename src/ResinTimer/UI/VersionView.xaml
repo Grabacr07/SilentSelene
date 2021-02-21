@@ -46,8 +46,8 @@
                        FontSize="16"
                        Margin="24">
                 <Run Text="Engineered by" />
-                <controls:OpenUriHyperlink Uri="https://twitter.com/Grabacr07">
-                    <Run Text="@Grabacr07." />
+                <controls:OpenUriHyperlink Uri="https://twitter.com/purple_proxy">
+                    <Run Text="@purple_proxy." />
                 </controls:OpenUriHyperlink>
                 <LineBreak />
                 <LineBreak />
