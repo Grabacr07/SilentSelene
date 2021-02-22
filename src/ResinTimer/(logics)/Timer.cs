@@ -88,14 +88,22 @@ namespace ResinTimer
 
         public void Reset(int resin)
         {
-            var minutes = (this.MaxResin.Value - resin).EnsureRange(this.MinResin.Value, this.MaxResin.Value) * MinutesOfResin;
-            var time = DateTimeOffset.Now.AddMinutes(minutes);
-            this._overflowingTime.Value = time;
+            var time = DateTimeOffset.Now.AddMinutes((this.MaxResin.Value - resin) * MinutesOfResin);
+            this.EnsureOverflowingRange(time);
         }
 
         public void Increase(int resin)
         {
-            this._overflowingTime.Value = this._overflowingTime.Value.Subtract(TimeSpan.FromMinutes(resin * MinutesOfResin));
+            var time = this._overflowingTime.Value.Subtract(TimeSpan.FromMinutes(resin * MinutesOfResin));
+            this.EnsureOverflowingRange(time);
+        }
+
+        private void EnsureOverflowingRange(DateTimeOffset time)
+        {
+            var max = DateTimeOffset.Now.AddMinutes(this.MaxResin.Value * MinutesOfResin);
+            var min = DateTimeOffset.Now.AddMinutes(this.MinResin.Value * MinutesOfResin);
+
+            this._overflowingTime.Value = time.EnsureRange(min, max);
         }
 
         private void Tick(DateTimeOffset signalTime)
