@@ -134,7 +134,7 @@
                                FontSize="16"
                                VerticalAlignment="Center"
                                Margin="0,3,8,0" />
-                    <TextBlock Text="{Binding Timer.OverflowingTime.Value, StringFormat={}{0:M/dd HH\\:mm\\:ss}, ConverterCulture=ja-jP}"
+                    <TextBlock Text="{Binding Timer.OverflowingTime.Value, StringFormat={}{0:M/d HH\\:mm\\:ss}, ConverterCulture=ja-jP}"
                                Foreground="{DynamicResource ActiveForegroundBrushKey}"
                                FontSize="24" />
                 </DockPanel>
