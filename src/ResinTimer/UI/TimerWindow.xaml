@@ -13,9 +13,9 @@
                    xmlns:controls="clr-namespace:ResinTimer.UI.Controls"
                    mc:Ignorable="d"
                    Title="{Binding Title}"
-                   Width="370"
-                   MinWidth="370"
-                   MaxWidth="370"
+                   Width="400"
+                   MinWidth="400"
+                   MaxWidth="400"
                    Height="160"
                    MinHeight="160"
                    MaxHeight="160"
@@ -127,7 +127,7 @@
                     Grid.Column="1"
                     Margin="4">
             <StackPanel DockPanel.Dock="Bottom"
-                        Width="200">
+                        Width="230">
                 <DockPanel Margin="4">
                     <TextBlock Text="回復"
                                Foreground="{DynamicResource ForegroundBrushKey}"
@@ -176,6 +176,8 @@
                                             MethodParameter="-60" />
                     <utils:CallMethodButton Content="-40"
                                             MethodParameter="-40" />
+                    <utils:CallMethodButton Content="-30"
+                                            MethodParameter="-30" />
                     <utils:CallMethodButton Content="-20"
                                             MethodParameter="-20" />
                     <utils:CallMethodButton Content="+60"
