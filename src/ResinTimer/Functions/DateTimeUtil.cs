@@ -12,5 +12,11 @@ namespace ResinTimer.Functions
                 : max < value
                     ? max
                     : value;
+
+        public static DateTimeOffset Earlier(DateTimeOffset d1, DateTimeOffset d2)
+            => d1 <= d2 ? d1 : d2;
+
+        public static DateTimeOffset Later(DateTimeOffset d1, DateTimeOffset d2)
+            => d1 >= d2 ? d1 : d2;
     }
 }

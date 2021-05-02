@@ -94,7 +94,9 @@ namespace ResinTimer
 
         public void Increase(int resin)
         {
-            var time = this._overflowingTime.Value.Subtract(TimeSpan.FromMinutes(resin * MinutesOfResin));
+            var targetTime = DateTimeUtil.Later(this._overflowingTime.Value, DateTimeOffset.Now);
+            var time = targetTime.Subtract(TimeSpan.FromMinutes(resin * MinutesOfResin));
+
             this.EnsureOverflowingRange(time);
         }
 
