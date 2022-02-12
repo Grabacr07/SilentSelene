@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="SilentSelene.UI.Timer.Manual"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
+             xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
+             xmlns:binds="clr-namespace:SilentSelene.UI.Timer.Bindings"
+             mc:Ignorable="d"
+             d:DesignWidth="400"
+             d:DataContext="{d:DesignInstance {x:Type binds:DesignTimeManual}, IsDesignTimeCreatable=True}">
+    <DockPanel>
+        <ctrls:ResinSpinner Current="{Binding ResinTimer.CurrentResin.Value}"
+                            RemainingTime="{Binding ResinTimer.RemainingTime.Value}"
+                            Margin="4" />
+
+        <StackPanel Margin="4">
+            <Border Height="20" />
+            <DockPanel Margin="4">
+                <TextBlock Text="回復"
+                           Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                           FontSize="16"
+                           VerticalAlignment="Center"
+                           Margin="0,4,8,0" />
+                <TextBlock Text="{Binding ResinTimer.OverflowingTime.Value, StringFormat={}{0:M/d HH\\:mm\\:ss}, ConverterCulture=ja-jP}"
+                           Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                           FontSize="24" />
+            </DockPanel>
+
+            <DockPanel Margin="2">
+                <ctrls:CallMethodButton DockPanel.Dock="Right"
+                                        Content="更新"
+                                        Icon="ArrowClockwise20"
+                                        MethodName="Update"
+                                        VerticalAlignment="Stretch"
+                                        Padding="24,0"
+                                        Margin="1" />
+                <Border Width="4"
+                        DockPanel.Dock="Right" />
+                <ctrls:PromptTextBox Text="{Binding NewResin.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Prompt="樹脂の入力"
+                                     FontSize="16"
+                                     Margin="2">
+                    <b:Interaction.Triggers>
+                        <b:KeyTrigger Key="Return"
+                                      FiredOn="KeyDown">
+                            <livet:LivetCallMethodAction MethodTarget="{Binding}"
+                                                         MethodName="Update" />
+                        </b:KeyTrigger>
+                    </b:Interaction.Triggers>
+                </ctrls:PromptTextBox>
+            </DockPanel>
+
+            <UniformGrid Rows="1"
+                         Margin="0">
+                <Panel.Resources>
+                    <Style TargetType="ctrls:CallMethodButton"
+                           BasedOn="{StaticResource {x:Type ctrls:CallMethodButton}}">
+                        <Setter Property="MethodName"
+                                Value="Increase" />
+                        <Setter Property="Appearance"
+                                Value="Secondary" />
+                        <Setter Property="Padding"
+                                Value="4" />
+                        <Setter Property="Margin"
+                                Value="4" />
+                    </Style>
+                </Panel.Resources>
+                <ctrls:CallMethodButton Content="-60"
+                                        MethodParameter="-60" />
+                <ctrls:CallMethodButton Content="-40"
+                                        MethodParameter="-40" />
+                <ctrls:CallMethodButton Content="-30"
+                                        MethodParameter="-30" />
+                <ctrls:CallMethodButton Content="-20"
+                                        MethodParameter="-20" />
+                <ctrls:CallMethodButton Content="+60"
+                                        MethodParameter="60" />
+            </UniformGrid>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

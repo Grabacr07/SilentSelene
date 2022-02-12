@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResinTimer", "ResinTimer\ResinTimer.csproj", "{C8DD4E63-9D43-46CF-B98C-9E9806286D74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResinTimer.old", "ResinTimer.old\ResinTimer.old.csproj", "{C8DD4E63-9D43-46CF-B98C-9E9806286D74}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroRadiance.Core", "MetroRadiance\MetroRadiance.Core\MetroRadiance.Core.csproj", "{66EFCFBE-3453-496B-A439-67249FDD2566}"
 EndProject
@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroTrilithon", "MetroTril
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroTrilithon.Desktop", "MetroTrilithon\MetroTrilithon.Desktop\MetroTrilithon.Desktop.csproj", "{7AA4A436-FCC6-4591-8459-237B0A373066}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilentSelene", "SilentSelene\SilentSelene.csproj", "{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,29 +28,27 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C8DD4E63-9D43-46CF-B98C-9E9806286D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8DD4E63-9D43-46CF-B98C-9E9806286D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8DD4E63-9D43-46CF-B98C-9E9806286D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8DD4E63-9D43-46CF-B98C-9E9806286D74}.Release|Any CPU.Build.0 = Release|Any CPU
 		{66EFCFBE-3453-496B-A439-67249FDD2566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{66EFCFBE-3453-496B-A439-67249FDD2566}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66EFCFBE-3453-496B-A439-67249FDD2566}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66EFCFBE-3453-496B-A439-67249FDD2566}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7AD96FD6-37CC-4A42-AF80-E8C82A408027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AD96FD6-37CC-4A42-AF80-E8C82A408027}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AD96FD6-37CC-4A42-AF80-E8C82A408027}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AD96FD6-37CC-4A42-AF80-E8C82A408027}.Release|Any CPU.Build.0 = Release|Any CPU
 		{02263A9F-0FB5-415F-A016-A074B540EBAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02263A9F-0FB5-415F-A016-A074B540EBAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02263A9F-0FB5-415F-A016-A074B540EBAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02263A9F-0FB5-415F-A016-A074B540EBAB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8DAA634B-CF04-4ECB-87C0-87EDF6FB1949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DAA634B-CF04-4ECB-87C0-87EDF6FB1949}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DAA634B-CF04-4ECB-87C0-87EDF6FB1949}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DAA634B-CF04-4ECB-87C0-87EDF6FB1949}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7AA4A436-FCC6-4591-8459-237B0A373066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AA4A436-FCC6-4591-8459-237B0A373066}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AA4A436-FCC6-4591-8459-237B0A373066}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AA4A436-FCC6-4591-8459-237B0A373066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
