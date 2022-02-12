@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:primitives="clr-namespace:SilentSelene.UI.Controls.Primitives">
+
+    <Style TargetType="primitives:CheckItem">
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource SystemAccentBrush}" />
+        <Setter Property="Background"
+                Value="{DynamicResource ControlFillColorDefaultBrush}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource TextFillColorPrimaryBrush}" />
+        <Setter Property="Width"
+                Value="20" />
+        <Setter Property="Height"
+                Value="20" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="primitives:CheckItem">
+                    <Border x:Name="Background"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="4">
+                        <TextBlock x:Name="CheckIcon"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{DynamicResource FluentSystemIcons}"
+                                   FontSize="16"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   Text=""
+                                   TextAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Setter TargetName="CheckIcon"
+                                    Property="Text"
+                                    Value="&#xF294;" />
+                            <Setter TargetName="Background"
+                                    Property="Background"
+                                    Value="{DynamicResource SystemAccentBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,59 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
+                    xmlns:primitives="clr-namespace:SilentSelene.UI.Controls.Primitives">
+
+    <Style TargetType="ctrls:TaskCounter">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ctrls:TaskCounter">
+                    <StackPanel>
+                        <ItemsControl x:Name="PART_ItemsHost"
+                                      HorizontalAlignment="Left">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Rows="1" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemContainerStyle>
+                                <Style>
+                                    <Setter Property="Control.Margin"
+                                            Value="4" />
+                                </Style>
+                            </ItemsControl.ItemContainerStyle>
+                        </ItemsControl>
+                        <Border Height=".99"
+                                Background="{DynamicResource TextFillColorTertiaryBrush}"
+                                Margin="4" />
+                        <DockPanel x:Name="Reward">
+                            <primitives:CheckItem IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsRewardReceived}"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="4" />
+                            <TextBlock x:Name="RewardDescription"
+                                       Text="{TemplateBinding RewardDescription}"
+                                       FontSize="18"
+                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                       VerticalAlignment="Center"
+                                       Margin="2,0,0,1" />
+                        </DockPanel>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsRewardReceived"
+                                 Value="{x:Null}">
+                            <Setter TargetName="Reward"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsRewardReceived"
+                                 Value="True">
+                            <Setter TargetName="RewardDescription"
+                                    Property="Foreground"
+                                    Value="{DynamicResource TextFillColorPrimaryBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

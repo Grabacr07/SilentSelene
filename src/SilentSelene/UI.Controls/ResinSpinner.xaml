@@ -3,7 +3,13 @@
                     xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
                     xmlns:props="clr-namespace:SilentSelene.Properties">
 
+    <ctrls:RemainingConverter x:Key="RemainingConverterKey" />
+
     <Style TargetType="ctrls:ResinSpinner">
+        <Setter Property="Maximum"
+                Value="{Binding Source={x:Static props:UserSettings.Default}, Path=MaxResin}" />
+        <Setter Property="Minimum"
+                Value="{Binding Source={x:Static props:UserSettings.Default}, Path=MinResin}" />
         <Setter Property="Foreground"
                 Value="{DynamicResource TextFillColorTertiaryBrush}" />
         <Setter Property="Width"
@@ -14,11 +20,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ctrls:ResinSpinner">
                     <Grid>
-                        <ctrls:RadialProgressBar Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type ctrls:ResinSpinner}}, Path=Current}"
-                                                 Maximum="{Binding Source={x:Static props:UserSettings.Default}, Path=MaxResin}"
-                                                 Minimum="{Binding Source={x:Static props:UserSettings.Default}, Path=MinResin}"
+                        <ctrls:RadialProgressBar x:Name="RadialProgressBar"
+                                                 Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Current}"
+                                                 Maximum="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Maximum}"
+                                                 Minimum="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Minimum}"
                                                  Foreground="{DynamicResource SystemAccentBrush}"
-                                                 Thickness="2" />
+                                                 Thickness="3" />
                         <StackPanel HorizontalAlignment="Center"
                                     VerticalAlignment="Center">
                             <Panel.Resources>
@@ -27,18 +34,44 @@
                                             Value="Center" />
                                 </Style>
                             </Panel.Resources>
-                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Current}"
-                                       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                                       FontSize="55"
-                                       Margin="0, -4" />
+                            <Grid Margin="0, -4">
+                                <TextBlock Text="SIZER"
+                                           Visibility="Hidden"
+                                           FontSize="55" />
+                                <TextBlock x:Name="ValueText"
+                                           Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Current}"
+                                           Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                           VerticalAlignment="Bottom"
+                                           FontSize="55" />
+                            </Grid>
                             <Border Background="{DynamicResource TextFillColorTertiaryBrush}"
                                     Width="90"
                                     Height=".99" />
-                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RemainingTime, StringFormat={}{0:hh\\:mm\\:ss}, ConverterCulture=ja-jP}"
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RemainingTime, Converter={StaticResource RemainingConverterKey}}"
                                        FontSize="22" />
                             <Border Height="12" />
                         </StackPanel>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Appearance"
+                                 Value="Coin">
+                            <Setter TargetName="ValueText"
+                                    Property="FontSize"
+                                    Value="40" />
+                            <Setter TargetName="ValueText"
+                                    Property="Margin"
+                                    Value="0,0,0,3" />
+                        </Trigger>
+                        <Trigger Property="UseHighlight"
+                                 Value="True">
+                            <Setter TargetName="RadialProgressBar"
+                                    Property="Foreground">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource PaletteRedColor}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

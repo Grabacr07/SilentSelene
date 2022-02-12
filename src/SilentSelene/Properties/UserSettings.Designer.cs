@@ -106,5 +106,41 @@ namespace SilentSelene.Properties {
                 this["NotifyOverflow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string uid {
+            get {
+                return ((string)(this["uid"]));
+            }
+            set {
+                this["uid"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ltuid {
+            get {
+                return ((string)(this["ltuid"]));
+            }
+            set {
+                this["ltuid"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ltoken {
+            get {
+                return ((string)(this["ltoken"]));
+            }
+            set {
+                this["ltoken"] = value;
+            }
+        }
     }
 }

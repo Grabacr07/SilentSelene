@@ -1,16 +1,72 @@
-﻿<Page x:Class="SilentSelene.UI.Timer.Auto"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:SilentSelene.UI.Timer"
-      xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
-      mc:Ignorable="d"
-      d:DesignWidth="800"
-      d:DesignHeight="450">
-    <Grid>
-        <ctrls:RadialProgressBar Thickness="2"
-                                 Width="120"
-                                 Height="120" />
-    </Grid>
-</Page>
+﻿<UserControl x:Class="SilentSelene.UI.Timer.Auto"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
+             xmlns:metro="http://schemes.grabacr.net/winfx/2015/personal/controls"
+             xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
+             xmlns:binds="clr-namespace:SilentSelene.UI.Timer.Bindings"
+             xmlns:primitives="clr-namespace:SilentSelene.UI.Controls.Primitives"
+             mc:Ignorable="d"
+             d:DesignWidth="420"
+             d:DataContext="{d:DesignInstance {x:Type binds:DesignTimeAuto}, IsDesignTimeCreatable=True}">
+    <DockPanel>
+        <StackPanel Margin="4">
+            <StackPanel Margin="0,4">
+                <TextBlock Text="天然樹脂"
+                           Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                           FontSize="16"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="{Binding RealtimeNote.OverflowingTime.Value, StringFormat={}{0:M/d HH\\:mm\\:ss}, ConverterCulture=ja-jP}"
+                           Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                           HorizontalAlignment="Center"
+                           FontSize="18" />
+            </StackPanel>
+            <ctrls:ResinSpinner Current="{Binding RealtimeNote.CurrentResin.Value}"
+                                RemainingTime="{Binding RealtimeNote.RemainingTime.Value}"
+                                UseHighlight="{Binding RealtimeNote.IsOverflow.Value}"
+                                Margin="4" />
+        </StackPanel>
+        <StackPanel Margin="4">
+            <StackPanel Margin="0,4">
+                <TextBlock Text="洞天宝銭"
+                           Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                           FontSize="16"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="{Binding RealtimeNote.CoinOverflowingTime.Value, StringFormat={}{0:M/d HH\\:mm\\:ss}, ConverterCulture=ja-jP}"
+                           Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                           FontSize="18"
+                           HorizontalAlignment="Center" />
+            </StackPanel>
+            <ctrls:ResinSpinner Current="{Binding RealtimeNote.CurrentCoin.Value}"
+                                Maximum="{Binding RealtimeNote.MaxCoin.Value}"
+                                Minimum="0"
+                                RemainingTime="{Binding RealtimeNote.CoinRemainingTime.Value}"
+                                Appearance="Coin"
+                                Margin="4" />
+        </StackPanel>
+
+        <StackPanel Margin="4"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom">
+            <StackPanel Margin="0,12">
+                <TextBlock Text="デイリー任務"
+                           Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                           FontSize="16"
+                           HorizontalAlignment="Center" />
+
+                <ctrls:TaskCounter Total="{Binding RealtimeNote.TotalTask.Value}"
+                                   Finished="{Binding RealtimeNote.FinishedTask.Value}"
+                                   IsRewardReceived="{Binding RealtimeNote.IsTaskRewardReceived.Value}"
+                                   RewardDescription="報酬受取"
+                                   Margin="4" />
+            </StackPanel>
+
+            <ctrls:ConnectionStatus IsActive="{Binding IsActive.Value}"
+                                    Margin="8" />
+
+        </StackPanel>
+    </DockPanel>
+</UserControl>

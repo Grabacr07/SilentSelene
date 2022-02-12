@@ -14,8 +14,7 @@ partial class App
     {
         base.OnStartup(e);
 
-        WPFUI.Theme.Watcher.Start();
-
+        WPFUI.Theme.Watcher.Start(true, true);
 
         new UI.Timer.Window().Show();
     }

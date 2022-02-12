@@ -2,17 +2,36 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Product>天然樹脂タイマー</Product>
+    <Authors>@Grabacr07</Authors>
+    <Company>grabacr.net</Company>
+    <Copyright>Copyright © 2022 Manato Kameya</Copyright>
+    <Description>Resin timer for Genshin Impact.</Description>
+    <RepositoryUrl>https://github.com/Grabacr07/ResinTimer</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Grabacr07/ResinTimer</PackageProjectUrl>
+    <PackageLicenseFile>..\..\LICENSE.md</PackageLicenseFile>
+    <PackageReadmeFile>..\..\README.md</PackageReadmeFile>
+    <PackageIcon>.assets\Icons\SilentSelene@128px.png</PackageIcon>
+    <ApplicationIcon>.assets\Icons\SilentSelene.ico</ApplicationIcon>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GenshinInfo" Version="1.0.1" />
     <PackageReference Include="LivetCask" Version="4.0.2" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.2" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="ReactiveProperty" Version="8.0.3" />
-    <PackageReference Include="WPF-UI" Version="1.2.1" />
+    <PackageReference Include="WPF-UI" Version="1.2.2-prerelease136" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MetroTrilithon\src\MetroTrilithon.Desktop\MetroTrilithon.Desktop.csproj" />
+    <ProjectReference Include="..\MetroTrilithon\src\MetroTrilithon\MetroTrilithon.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,12 +47,33 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UI\Preferences\" />
+    <Content Include=".assets\Icons\SilentSelene.ico" />
+    <Resource Include=".assets\Icons\Tasktray.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MetroTrilithon\src\MetroTrilithon.Desktop\MetroTrilithon.Desktop.csproj" />
-    <ProjectReference Include="..\MetroTrilithon\src\MetroTrilithon\MetroTrilithon.csproj" />
+    <None Remove=".assets\Licenses\.NET Core WPF.txt" />
+    <None Remove=".assets\Licenses\.NET Runtime.txt" />
+    <None Remove=".assets\Licenses\Application Insights.txt" />
+    <None Remove=".assets\Licenses\H.NotifyIcon.WPF.txt" />
+    <None Remove=".assets\Licenses\Livet.txt" />
+    <None Remove=".assets\Licenses\ReactiveProperty.txt" />
+    <None Remove=".assets\Licenses\Rx.NET.txt" />
+    <None Remove=".assets\Licenses\Windows Community Toolkit.txt" />
+    <None Remove=".assets\Licenses\XamlBehaviors for WPF.txt" />
+    <EmbeddedResource Include=".assets\Licenses\.NET Core WPF.txt" />
+    <EmbeddedResource Include=".assets\Licenses\.NET Runtime.txt" />
+    <EmbeddedResource Include=".assets\Licenses\Application Insights.txt" />
+    <EmbeddedResource Include=".assets\Licenses\H.NotifyIcon.WPF.txt" />
+    <EmbeddedResource Include=".assets\Licenses\Livet.txt" />
+    <EmbeddedResource Include=".assets\Licenses\ReactiveProperty.txt" />
+    <EmbeddedResource Include=".assets\Licenses\Rx.NET.txt" />
+    <EmbeddedResource Include=".assets\Licenses\Windows Community Toolkit.txt" />
+    <EmbeddedResource Include=".assets\Licenses\XamlBehaviors for WPF.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UI\Preferences\" />
   </ItemGroup>
 
 </Project>

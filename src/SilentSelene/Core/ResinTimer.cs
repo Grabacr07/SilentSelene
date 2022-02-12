@@ -37,9 +37,7 @@ public class ResinTimer : IDisposable
     public IReadOnlyReactiveProperty<bool> IsOverflow { get; }
 
     public ResinTimer()
-        : this(INotifier.Default)
-    {
-    }
+        : this(INotifier.Default) { }
 
     public ResinTimer(INotifier notifier)
     {
@@ -72,16 +70,17 @@ public class ResinTimer : IDisposable
 
         this._overflowingTime
 #if DEBUG
-            .Where(x => MetroTrilithon.DebugFeatures.IsInDesignMode == false)
+            .Where(_ => MetroTrilithon.DebugFeatures.IsInDesignMode == false)
 #endif
             .Skip(1)
-            .Subscribe(x =>
-            {
-                UserSettings.Default.LatestOverflowTime = x;
-                UserSettings.Default.Save();
-            });
+            .Subscribe(
+                x =>
+                {
+                    UserSettings.Default.LatestOverflowTime = x;
+                    UserSettings.Default.Save();
+                });
 
-        this._systemTimer.Elapsed += (sender, args) => this.Tick(new DateTimeOffset(args.SignalTime));
+        this._systemTimer.Elapsed += (_, args) => this.Tick(new DateTimeOffset(args.SignalTime));
         this._systemTimer.Start();
     }
 
@@ -99,7 +98,7 @@ public class ResinTimer : IDisposable
         this.EnsureOverflowingRange(time);
     }
 
-    private void EnsureOverflowingRange(DateTimeOffset time)
+    protected void EnsureOverflowingRange(DateTimeOffset time)
     {
         var max = DateTimeOffset.Now.AddMinutes(this.MaxResin.Value * _minutesOfResin);
         var min = DateTimeOffset.Now.AddMinutes(this.MinResin.Value * _minutesOfResin);
@@ -107,7 +106,7 @@ public class ResinTimer : IDisposable
         this._overflowingTime.Value = time.EnsureRange(min, max);
     }
 
-    private void Tick(DateTimeOffset signalTime)
+    protected virtual void Tick(DateTimeOffset signalTime)
     {
         var remaining = this._overflowingTime.Value.Subtract(signalTime);
 
@@ -127,6 +126,15 @@ public class ResinTimer : IDisposable
 
     public void Dispose()
     {
-        this._systemTimer.Dispose();
+        this.Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            this._systemTimer.Dispose();
+        }
     }
 }

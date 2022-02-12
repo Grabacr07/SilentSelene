@@ -24,8 +24,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Remove="Assets\Icons\ResinTimer.ico" />
-    <None Remove="Assets\Icons\Tasktray.ico" />
     <None Remove="Assets\Licenses\.NET Core WPF.txt" />
     <None Remove="Assets\Licenses\.NET Runtime.txt" />
     <None Remove="Assets\Licenses\Application Insights.txt" />
@@ -40,7 +38,6 @@
     <None Remove="Assets\Licenses\XamlBehaviors for WPF.txt" />
     <None Remove="ResinTimer.csproj.DotSettings" />
     <Resource Include="Assets\Icons\Tasktray.ico" />
-    <EmbeddedResource Include="Assets\Icons\ResinTimer.ico" />
     <EmbeddedResource Include="Assets\Licenses\.NET Core WPF.txt" />
     <EmbeddedResource Include="Assets\Licenses\.NET Runtime.txt" />
     <EmbeddedResource Include="Assets\Licenses\Application Insights.txt" />

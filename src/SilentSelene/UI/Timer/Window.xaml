@@ -15,7 +15,7 @@
         Title="SilentSelene"
         MinWidth="100"
         MinHeight="100"
-        Width="420"
+        Width="450"
         SizeToContent="Height"
         ResizeMode="CanMinimize"
         UseLayoutRounding="True"
@@ -68,6 +68,9 @@
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type binds:Manual}">
                     <local:Manual />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type binds:Auto}">
+                    <local:Auto />
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
