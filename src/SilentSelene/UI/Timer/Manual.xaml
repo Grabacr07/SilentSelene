@@ -5,6 +5,7 @@
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
+             xmlns:metro="http://schemes.grabacr.net/winfx/2015/personal/controls"
              xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
              xmlns:binds="clr-namespace:SilentSelene.UI.Timer.Bindings"
              mc:Ignorable="d"
@@ -29,7 +30,7 @@
             </DockPanel>
 
             <DockPanel Margin="2">
-                <ctrls:CallMethodButton DockPanel.Dock="Right"
+                <metro:CallMethodButton DockPanel.Dock="Right"
                                         Content="更新"
                                         Icon="ArrowClockwise20"
                                         MethodName="Update"
@@ -38,7 +39,7 @@
                                         Margin="1" />
                 <Border Width="4"
                         DockPanel.Dock="Right" />
-                <ctrls:PromptTextBox Text="{Binding NewResin.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <metro:PromptTextBox Text="{Binding NewResin.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      Prompt="樹脂の入力"
                                      FontSize="16"
                                      Margin="2">
@@ -49,14 +50,14 @@
                                                          MethodName="Update" />
                         </b:KeyTrigger>
                     </b:Interaction.Triggers>
-                </ctrls:PromptTextBox>
+                </metro:PromptTextBox>
             </DockPanel>
 
             <UniformGrid Rows="1"
                          Margin="0">
                 <Panel.Resources>
-                    <Style TargetType="ctrls:CallMethodButton"
-                           BasedOn="{StaticResource {x:Type ctrls:CallMethodButton}}">
+                    <Style TargetType="metro:CallMethodButton"
+                           BasedOn="{StaticResource {x:Type metro:CallMethodButton}}">
                         <Setter Property="MethodName"
                                 Value="Increase" />
                         <Setter Property="Appearance"
@@ -67,15 +68,15 @@
                                 Value="4" />
                     </Style>
                 </Panel.Resources>
-                <ctrls:CallMethodButton Content="-60"
+                <metro:CallMethodButton Content="-60"
                                         MethodParameter="-60" />
-                <ctrls:CallMethodButton Content="-40"
+                <metro:CallMethodButton Content="-40"
                                         MethodParameter="-40" />
-                <ctrls:CallMethodButton Content="-30"
+                <metro:CallMethodButton Content="-30"
                                         MethodParameter="-30" />
-                <ctrls:CallMethodButton Content="-20"
+                <metro:CallMethodButton Content="-20"
                                         MethodParameter="-20" />
-                <ctrls:CallMethodButton Content="+60"
+                <metro:CallMethodButton Content="+60"
                                         MethodParameter="60" />
             </UniformGrid>
         </StackPanel>

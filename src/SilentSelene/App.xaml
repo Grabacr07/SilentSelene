@@ -6,7 +6,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/WPFUI;component/Styles/Theme/Dark.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFUI;component/Styles/WPFUI.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/SilentSelene;component/UI.Controls/CallMethodButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MetroTrilithon.Desktop;component/Styles/Controls.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>

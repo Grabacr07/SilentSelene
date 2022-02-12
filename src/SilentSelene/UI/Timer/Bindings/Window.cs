@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Livet.Messaging.Windows;
+using MetroTrilithon.Mvvm;
 using Reactive.Bindings;
-using SilentSelene.Mvvm;
 
 namespace SilentSelene.UI.Timer.Bindings
 {

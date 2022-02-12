@@ -5,21 +5,13 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResinTimer.old", "ResinTimer.old\ResinTimer.old.csproj", "{C8DD4E63-9D43-46CF-B98C-9E9806286D74}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroRadiance.Core", "MetroRadiance\MetroRadiance.Core\MetroRadiance.Core.csproj", "{66EFCFBE-3453-496B-A439-67249FDD2566}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MetroRadiance", "MetroRadiance", "{DF84FBA9-AA54-457A-9014-C2F8E80E804B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroRadiance.Chrome", "MetroRadiance\MetroRadiance.Chrome\MetroRadiance.Chrome.csproj", "{7AD96FD6-37CC-4A42-AF80-E8C82A408027}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroRadiance", "MetroRadiance\MetroRadiance\MetroRadiance.csproj", "{02263A9F-0FB5-415F-A016-A074B540EBAB}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MetroTrilithon", "MetroTrilithon", "{3AA0EA02-48B3-4CC2-947B-BA1A775A9DF3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroTrilithon", "MetroTrilithon\MetroTrilithon\MetroTrilithon.csproj", "{8DAA634B-CF04-4ECB-87C0-87EDF6FB1949}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SilentSelene", "SilentSelene\SilentSelene.csproj", "{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroTrilithon.Desktop", "MetroTrilithon\MetroTrilithon.Desktop\MetroTrilithon.Desktop.csproj", "{7AA4A436-FCC6-4591-8459-237B0A373066}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroTrilithon", "MetroTrilithon\src\MetroTrilithon\MetroTrilithon.csproj", "{C1CE5885-0C07-436D-AE6B-CCE47EED3A22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilentSelene", "SilentSelene\SilentSelene.csproj", "{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroTrilithon.Desktop", "MetroTrilithon\src\MetroTrilithon.Desktop\MetroTrilithon.Desktop.csproj", "{557FDFC5-37C4-4974-9FC4-76F2C4E612AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,35 +22,25 @@ Global
 		{C8DD4E63-9D43-46CF-B98C-9E9806286D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C8DD4E63-9D43-46CF-B98C-9E9806286D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8DD4E63-9D43-46CF-B98C-9E9806286D74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{66EFCFBE-3453-496B-A439-67249FDD2566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{66EFCFBE-3453-496B-A439-67249FDD2566}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{66EFCFBE-3453-496B-A439-67249FDD2566}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7AD96FD6-37CC-4A42-AF80-E8C82A408027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AD96FD6-37CC-4A42-AF80-E8C82A408027}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AD96FD6-37CC-4A42-AF80-E8C82A408027}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02263A9F-0FB5-415F-A016-A074B540EBAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02263A9F-0FB5-415F-A016-A074B540EBAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02263A9F-0FB5-415F-A016-A074B540EBAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8DAA634B-CF04-4ECB-87C0-87EDF6FB1949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DAA634B-CF04-4ECB-87C0-87EDF6FB1949}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DAA634B-CF04-4ECB-87C0-87EDF6FB1949}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7AA4A436-FCC6-4591-8459-237B0A373066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AA4A436-FCC6-4591-8459-237B0A373066}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AA4A436-FCC6-4591-8459-237B0A373066}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1CE5885-0C07-436D-AE6B-CCE47EED3A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1CE5885-0C07-436D-AE6B-CCE47EED3A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1CE5885-0C07-436D-AE6B-CCE47EED3A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1CE5885-0C07-436D-AE6B-CCE47EED3A22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{557FDFC5-37C4-4974-9FC4-76F2C4E612AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{557FDFC5-37C4-4974-9FC4-76F2C4E612AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{557FDFC5-37C4-4974-9FC4-76F2C4E612AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{557FDFC5-37C4-4974-9FC4-76F2C4E612AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{66EFCFBE-3453-496B-A439-67249FDD2566} = {DF84FBA9-AA54-457A-9014-C2F8E80E804B}
-		{7AD96FD6-37CC-4A42-AF80-E8C82A408027} = {DF84FBA9-AA54-457A-9014-C2F8E80E804B}
-		{02263A9F-0FB5-415F-A016-A074B540EBAB} = {DF84FBA9-AA54-457A-9014-C2F8E80E804B}
-		{8DAA634B-CF04-4ECB-87C0-87EDF6FB1949} = {3AA0EA02-48B3-4CC2-947B-BA1A775A9DF3}
-		{7AA4A436-FCC6-4591-8459-237B0A373066} = {3AA0EA02-48B3-4CC2-947B-BA1A775A9DF3}
+		{C1CE5885-0C07-436D-AE6B-CCE47EED3A22} = {3AA0EA02-48B3-4CC2-947B-BA1A775A9DF3}
+		{557FDFC5-37C4-4974-9FC4-76F2C4E612AB} = {3AA0EA02-48B3-4CC2-947B-BA1A775A9DF3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30BE589D-284F-4E6A-A0E4-DBD9FFD6E6B2}

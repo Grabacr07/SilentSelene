@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/SilentSelene;component/UI.Controls/PromptTextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SilentSelene;component/UI.Controls/RadialProgressBar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SilentSelene;component/UI.Controls/ResinSpinner.xaml" />
     </ResourceDictionary.MergedDictionaries>

@@ -7,8 +7,6 @@ namespace SilentSelene;
 
 public class DebugFeatures
 {
-    public static bool IsInDesignMode
-        => DesignerProperties.GetIsInDesignMode(new DependencyObject());
 }
 
 

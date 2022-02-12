@@ -72,7 +72,7 @@ public class ResinTimer : IDisposable
 
         this._overflowingTime
 #if DEBUG
-            .Where(x => DebugFeatures.IsInDesignMode == false)
+            .Where(x => MetroTrilithon.DebugFeatures.IsInDesignMode == false)
 #endif
             .Skip(1)
             .Subscribe(x =>

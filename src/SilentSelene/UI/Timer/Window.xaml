@@ -5,6 +5,7 @@
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:metro="http://schemes.grabacr.net/winfx/2015/personal/controls"
         xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
         xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
         xmlns:local="clr-namespace:SilentSelene.UI.Timer"
@@ -74,7 +75,7 @@
         <StackPanel Grid.Row="0"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
-            <ctrls:CallMethodButton MethodName="OpenPreferences"
+            <metro:CallMethodButton MethodName="OpenPreferences"
                                     KeyboardNavigation.IsTabStop="False"
                                     Style="{StaticResource UiTitlebarButton}">
                 <Viewbox Width="16"
@@ -84,8 +85,8 @@
                          RenderOptions.BitmapScalingMode="HighQuality">
                     <wpfui:Icon Glyph="Settings48" />
                 </Viewbox>
-            </ctrls:CallMethodButton>
-            <ctrls:CallMethodButton MethodName="Minimize"
+            </metro:CallMethodButton>
+            <metro:CallMethodButton MethodName="Minimize"
                                     KeyboardNavigation.IsTabStop="False"
                                     Style="{StaticResource UiTitlebarButton}">
                 <Viewbox Width="11"
@@ -95,8 +96,8 @@
                          RenderOptions.BitmapScalingMode="HighQuality">
                     <ContentControl Content="{DynamicResource UiIconMinimize}" />
                 </Viewbox>
-            </ctrls:CallMethodButton>
-            <ctrls:CallMethodButton MethodName="Close"
+            </metro:CallMethodButton>
+            <metro:CallMethodButton MethodName="Close"
                                     Background="{DynamicResource PaletteRedBrush}"
                                     KeyboardNavigation.IsTabStop="False"
                                     Style="{StaticResource UiTitlebarButton}">
@@ -107,7 +108,7 @@
                          RenderOptions.BitmapScalingMode="HighQuality">
                     <ContentControl Content="{DynamicResource UiIconClose}" />
                 </Viewbox>
-            </ctrls:CallMethodButton>
+            </metro:CallMethodButton>
         </StackPanel>
     </Grid>
 </Window>

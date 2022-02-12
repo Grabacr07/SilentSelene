@@ -1,9 +1,0 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-	<ResourceDictionary.MergedDictionaries>
-		<ResourceDictionary Source="/MetroRadiance.Chrome;component/Chrome/GlowingEdge.xaml" />
-		<ResourceDictionary Source="/MetroRadiance.Chrome;component/Chrome/Primitives/ChromeWindow.base.xaml" />
-	</ResourceDictionary.MergedDictionaries>
-
-</ResourceDictionary>
