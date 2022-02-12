@@ -14,7 +14,7 @@ namespace MetroTrilithon.Mvvm
     {
         private event PropertyChangedEventHandler? _propertyChanged;
 
-        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        event PropertyChangedEventHandler? INotifyPropertyChanged.PropertyChanged
         {
             add => this._propertyChanged += value;
             remove => this._propertyChanged -= value;
