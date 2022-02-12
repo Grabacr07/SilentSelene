@@ -2,6 +2,12 @@
 
 A resin timer for Genshin Impact.
 
+[![Build](https://github.com/Grabacr07/ResinTimer/actions/workflows/build.yml/badge.svg)](https://github.com/Grabacr07/ResinTimer/actions/workflows/build.yml)
+[![License](https://img.shields.io/github/license/Grabacr07/ResinTImer)](LICENSE.md)
+
+
+## Features
+
 * Resin input (manual)
 * Display current resin
 * Show desktop notifications when resin overflows
@@ -12,8 +18,9 @@ A resin timer for Genshin Impact.
 
 ## Requirements
 
-* Windows 10 (18362) or later
-* .NET Core 3.1
+* Windows 10 (17763) or later
+* .NET 6.0 runtime
+
 
 ## License
 
