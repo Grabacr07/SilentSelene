@@ -10,6 +10,7 @@
         xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
         xmlns:local="clr-namespace:SilentSelene.UI.Timer"
         xmlns:binds="clr-namespace:SilentSelene.UI.Timer.Bindings"
+        xmlns:prefs="clr-namespace:SilentSelene.UI.Preferences"
         mc:Ignorable="d"
         Style="{StaticResource UiWindow}"
         Title="SilentSelene"
@@ -43,12 +44,12 @@
             <livet:WindowInteractionMessageAction />
         </livet:InteractionMessageTrigger>
 
-        <!--<livet:InteractionMessageTrigger Messenger="{Binding Messenger}"
-                                         MessageKey="{x:Static bindings:TimerWindowViewModel.ShowOptionWindowMessageKey}">
-            <livet:TransitionInteractionMessageAction WindowType="{x:Type ui:MainWindow}"
+        <livet:InteractionMessageTrigger Messenger="{Binding Messenger}"
+                                         MessageKey="{x:Static binds:Window.OpenPreferencesMessageKey}">
+            <livet:TransitionInteractionMessageAction WindowType="{x:Type prefs:Window}"
                                                       Mode="NewOrActive"
                                                       IsOwned="False" />
-        </livet:InteractionMessageTrigger>-->
+        </livet:InteractionMessageTrigger>
     </b:Interaction.Triggers>
 
     <Window.DataContext>

@@ -1,6 +1,6 @@
 ﻿namespace SilentSelene.UI.Timer;
 
-public partial class Auto
+partial class Auto
 {
     public Auto()
     {

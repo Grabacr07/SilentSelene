@@ -1,4 +1,4 @@
-# ResinTimer
+# SilentSelene
 
 A resin timer for Genshin Impact.
 

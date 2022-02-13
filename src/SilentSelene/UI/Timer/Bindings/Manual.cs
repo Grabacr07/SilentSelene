@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using Livet;
 using Reactive.Bindings;
 using SilentSelene.Core;
@@ -26,6 +27,7 @@ public class Manual : ViewModel
         //    .Subscribe(x => ThemeService.Current.ChangeAccent(x ? Accent.Orange : Accent.Blue));
     }
 
+    [UsedImplicitly]
     public void Update()
     {
         if (int.TryParse(this.NewResin.Value, out var resin))
@@ -36,6 +38,7 @@ public class Manual : ViewModel
         this.NewResin.Value = "";
     }
 
+    [UsedImplicitly]
     public void Increase(string value)
     {
         if (int.TryParse(value, out var i)) this.ResinTimer.Increase(i);

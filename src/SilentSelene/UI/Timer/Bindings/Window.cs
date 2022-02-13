@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using JetBrains.Annotations;
+using Livet.Messaging;
 using Livet.Messaging.Windows;
 using MetroTrilithon.Mvvm;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
-using SilentSelene.Core;
 using SilentSelene.Properties;
 
 namespace SilentSelene.UI.Timer.Bindings;
@@ -35,10 +36,15 @@ public class Window : WindowBase
             .ToReactivePropertyAsSynchronized(x => x.TopMost);
     }
 
+    [UsedImplicitly]
     public void OpenPreferences()
     {
+        var context = new Preferences.Bindings.Window();
+        var message = new TransitionMessage(context, OpenPreferencesMessageKey);
+        this.Messenger.Raise(message);
     }
 
+    [UsedImplicitly]
     public void Minimize()
         => this.SendWindowAction(WindowAction.Minimize);
 }

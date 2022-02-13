@@ -1,0 +1,141 @@
+﻿<Page x:Class="SilentSelene.UI.Preferences.Accounts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
+      xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+      xmlns:local="clr-namespace:SilentSelene.UI.Preferences"
+      xmlns:binds="clr-namespace:SilentSelene.UI.Preferences.Bindings"
+      mc:Ignorable="d"
+      Title="高度な設定"
+      d:DesignWidth="800"
+      d:DesignHeight="800"
+      d:DataContext="{d:DesignInstance {x:Type binds:Accounts}, IsDesignTimeCreatable=True}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/UI/Preferences/Styles.Common.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top"
+                   Style="{DynamicResource BreadcrumbTextStyle}" />
+
+        <StackPanel Style="{DynamicResource PageContentHostStyle}">
+            <wpfui:CardExpander Icon="ArrowSync24"
+                                Header="リアルタイムノート API を使用する"
+                                Subtitle="天然樹脂やデイリー任務の状況を自動的に取得します。">
+                <wpfui:CardExpander.HeaderContent>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding UseRealtimeNoteApiLabel.Value, Mode=OneWay}"
+                                   FontSize="14"
+                                   VerticalAlignment="Center" />
+                        <wpfui:ToggleSwitch IsChecked="{Binding UseRealtimeNoteApi.Value, Mode=TwoWay}"
+                                            Margin="12,0" />
+                    </StackPanel>
+                </wpfui:CardExpander.HeaderContent>
+                <StackPanel Style="{DynamicResource ExpanderContentHostStyle}"
+                            IsEnabled="{Binding UseRealtimeNoteApi.Value, Mode=OneWay}">
+                    <DockPanel>
+                        <TextBox DockPanel.Dock="Right"
+                                 Text="{Binding Uid.Value, Mode=TwoWay}"
+                                 Width="300" />
+                        <TextBlock Text="uid"
+                                   VerticalAlignment="Center" />
+                    </DockPanel>
+                    <Border Style="{DynamicResource ExpanderContentSeparatorStyle}" />
+                    <DockPanel>
+                        <TextBox DockPanel.Dock="Right"
+                                 Text="{Binding Ltuid.Value, Mode=TwoWay}"
+                                 Width="300" />
+                        <TextBlock Text="ltuid"
+                                   VerticalAlignment="Center" />
+                    </DockPanel>
+                    <Border Style="{DynamicResource ExpanderContentSeparatorStyle}" />
+                    <DockPanel>
+                        <TextBox DockPanel.Dock="Right"
+                                 Text="{Binding Ltoken.Value, Mode=TwoWay}"
+                                 Width="300" />
+                        <TextBlock Text="ltoken"
+                                   VerticalAlignment="Center" />
+                    </DockPanel>
+                </StackPanel>
+            </wpfui:CardExpander>
+
+            <wpfui:CardExpander Icon="Warning24"
+                                Header="リアルタイムノート API について">
+                <StackPanel Style="{DynamicResource ExpanderContentHostStyle}">
+                    <TextBlock TextWrapping="Wrap"
+                               Foreground="{DynamicResource TextFillColorTertiaryBrush}">
+                        <Run Text="免責事項"
+                             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                             FontWeight="Bold" />
+                        <LineBreak />
+                        <InlineUIContainer>
+                            <Border Height="8" />
+                        </InlineUIContainer>
+                        <LineBreak />
+                        <Run Text="HoYoLAB アプリのリアルタイムノート機能がアクセスしている API を使用します。" />
+                        <Run Text="サードパーティ向けに開放されたものではないため、サービスの仕様変更等により動作しなくなる可能性があります。" />
+                        <LineBreak />
+                        <InlineUIContainer>
+                            <Border Height="8" />
+                        </InlineUIContainer>
+                        <LineBreak />
+                        <Run Text="また、この機能の利用により発生した如何なる問題や損害について、開発者は責任を負いません。" />
+                        <Run Text="これらをご理解のうえご利用ください。" />
+                    </TextBlock>
+                    <Border Style="{DynamicResource ExpanderContentSeparatorStyle}" />
+                    <TextBlock TextWrapping="Wrap">
+                        <Run Text="入力項目"
+                             FontWeight="Bold" />
+                    </TextBlock>
+                    <Border Height="8" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="16" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Panel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Margin"
+                                        Value="0,2" />
+                            </Style>
+                        </Panel.Resources>
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="0"
+                                   Text="uid:" />
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="9 桁のゲーム ID を入力"
+                                   Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="ltuid:" />
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="2"
+                                   Text="Web ブラウザー等で HoYoLAB にログインした際の Cookie から取得して入力"
+                                   Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                        <TextBlock Grid.Row="2"
+                                   Grid.Column="0"
+                                   Text="ltoken:" />
+                        <TextBlock Grid.Row="2"
+                                   Grid.Column="2"
+                                   Text="Web ブラウザー等で HoYoLAB にログインした際の Cookie から取得して入力"
+                                   Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                    </Grid>
+                </StackPanel>
+            </wpfui:CardExpander>
+        </StackPanel>
+    </DockPanel>
+</Page>

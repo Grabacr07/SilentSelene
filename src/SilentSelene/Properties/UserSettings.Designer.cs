@@ -142,5 +142,17 @@ namespace SilentSelene.Properties {
                 this["ltoken"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseRealtimeNoteApi {
+            get {
+                return ((bool)(this["UseRealtimeNoteApi"]));
+            }
+            set {
+                this["UseRealtimeNoteApi"] = value;
+            }
+        }
     }
 }

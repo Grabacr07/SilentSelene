@@ -1,6 +1,6 @@
 ﻿namespace SilentSelene.UI.Timer;
 
-public partial class Manual
+partial class Manual
 {
     public Manual()
     {

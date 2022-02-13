@@ -17,11 +17,12 @@
     <PackageReadmeFile>..\..\README.md</PackageReadmeFile>
     <PackageIcon>.assets\Icons\SilentSelene@128px.png</PackageIcon>
     <ApplicationIcon>.assets\Icons\SilentSelene.ico</ApplicationIcon>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="GenshinInfo" Version="1.0.1" />
+    <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
     <PackageReference Include="LivetCask" Version="4.0.2" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.2" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
@@ -49,6 +50,7 @@
   <ItemGroup>
     <Content Include=".assets\Icons\SilentSelene.ico" />
     <Resource Include=".assets\Icons\Tasktray.ico" />
+    <Resource Include=".assets\Icons\resin.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -70,10 +72,6 @@
     <EmbeddedResource Include=".assets\Licenses\Rx.NET.txt" />
     <EmbeddedResource Include=".assets\Licenses\Windows Community Toolkit.txt" />
     <EmbeddedResource Include=".assets\Licenses\XamlBehaviors for WPF.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="UI\Preferences\" />
   </ItemGroup>
 
 </Project>
