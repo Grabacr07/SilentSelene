@@ -57,7 +57,6 @@
     <None Remove=".assets\Licenses\.NET Core WPF.txt" />
     <None Remove=".assets\Licenses\.NET Runtime.txt" />
     <None Remove=".assets\Licenses\Application Insights.txt" />
-    <None Remove=".assets\Licenses\H.NotifyIcon.WPF.txt" />
     <None Remove=".assets\Licenses\Livet.txt" />
     <None Remove=".assets\Licenses\ReactiveProperty.txt" />
     <None Remove=".assets\Licenses\Rx.NET.txt" />
@@ -66,11 +65,12 @@
     <EmbeddedResource Include=".assets\Licenses\.NET Core WPF.txt" />
     <EmbeddedResource Include=".assets\Licenses\.NET Runtime.txt" />
     <EmbeddedResource Include=".assets\Licenses\Application Insights.txt" />
-    <EmbeddedResource Include=".assets\Licenses\H.NotifyIcon.WPF.txt" />
+    <EmbeddedResource Include=".assets\Licenses\GenshinInfoAPI.txt" />
     <EmbeddedResource Include=".assets\Licenses\Livet.txt" />
     <EmbeddedResource Include=".assets\Licenses\ReactiveProperty.txt" />
     <EmbeddedResource Include=".assets\Licenses\Rx.NET.txt" />
     <EmbeddedResource Include=".assets\Licenses\Windows Community Toolkit.txt" />
+    <EmbeddedResource Include=".assets\Licenses\WPF UI.txt" />
     <EmbeddedResource Include=".assets\Licenses\XamlBehaviors for WPF.txt" />
   </ItemGroup>
 

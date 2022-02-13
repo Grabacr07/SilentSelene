@@ -17,6 +17,8 @@
         MinWidth="100"
         MinHeight="100"
         Width="450"
+        Topmost="{Binding TopMost.Value, Mode=OneWay}"
+        ShowInTaskbar="{Binding ShowInTaskbar.Value, Mode=OneWay}"
         SizeToContent="Height"
         ResizeMode="CanMinimize"
         UseLayoutRounding="True"
