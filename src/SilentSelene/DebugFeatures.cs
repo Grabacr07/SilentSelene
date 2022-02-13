@@ -1,16 +1,13 @@
 ﻿#if DEBUG
 
-using System.ComponentModel;
-using System.Windows;
 using SilentSelene.Core;
 
 namespace SilentSelene;
 
 public class DebugFeatures
 {
-    public static void Notify()
+    public static void Break()
     {
-        new DesktopToast().Notify("test", "toastだょ");
     }
 }
 

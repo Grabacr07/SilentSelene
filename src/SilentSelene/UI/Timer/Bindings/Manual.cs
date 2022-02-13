@@ -18,10 +18,6 @@ public class Manual : ViewModel
     {
         this.ResinTimer = resinTimer;
         this.NewResin = new ReactiveProperty<string>();
-
-        //ToDo
-        //resinTimer.IsOverflow
-        //    .Subscribe(x => ThemeService.Current.ChangeAccent(x ? Accent.Orange : Accent.Blue));
     }
 
     [UsedImplicitly]
