@@ -25,40 +25,37 @@ public class Generals : ViewModel
 
     public IReactiveProperty<string> OverflowResin { get; }
 
-    public Generals()
+    internal Generals(UserSettings settings)
     {
-        this.ShowInTaskbar = UserSettings.Default
-            .ToReactivePropertyAsSynchronized(x => x.ShowInTaskbar);
+        this.ShowInTaskbar = settings
+            .ToReactivePropertyAsSynchronized(x => x.ShowInTaskbar)
+            .AddTo(this.CompositeDisposable);
 
-        this.TopMost = UserSettings.Default
-            .ToReactivePropertyAsSynchronized(x => x.TopMost);
+        this.TopMost = settings
+            .ToReactivePropertyAsSynchronized(x => x.TopMost)
+            .AddTo(this.CompositeDisposable);
 
-        this.NotifyOverflow = UserSettings.Default
-            .ToReactivePropertyAsSynchronized(x => x.NotifyOverflow);
+        this.NotifyOverflow = settings
+            .ToReactivePropertyAsSynchronized(x => x.NotifyOverflow)
+            .AddTo(this.CompositeDisposable);
 
         this.NotifyOverFlowLabel = this.NotifyOverflow
             .Select(x => x ? "オン" : "オフ")
             .ToReadOnlyReactiveProperty("");
 
-        this.OverflowResin = UserSettings.Default
+        this.OverflowResin = settings
             .ToReactivePropertyAsSynchronized(
                 x => x.OverflowResin,
                 x => x.ToString(),
                 x => int.TryParse(x, out var i)
-                    ? i.EnsureRange(UserSettings.Default.MinResin, UserSettings.Default.MaxResin)
-                    : UserSettings.Default.MaxResin);
+                    ? i.EnsureRange(settings.MinResin, settings.MaxResin)
+                    : settings.MaxResin)
+            .AddTo(this.CompositeDisposable);
     }
 
     [UsedImplicitly]
     public void TestNotification()
     {
         INotifier.Default.Notify("テスト", $"これは {AssemblyInfo.Product} の通知テストです。");
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-
-        UserSettings.Default.Save();
     }
 }

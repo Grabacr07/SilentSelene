@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using Livet;
 using Reactive.Bindings;
+using Reactive.Bindings.Extensions;
 using SilentSelene.Core;
 
 namespace SilentSelene.UI.Timer.Bindings;
@@ -19,7 +20,8 @@ public class Auto : ViewModel
         this.RealtimeNote = realtimeNote;
         this.IsActive = realtimeNote.HasError
             .Select(x => x == false)
-            .ToReadOnlyReactiveProperty();
+            .ToReadOnlyReactiveProperty()
+            .AddTo(this.CompositeDisposable);
     }
 
     protected override void Dispose(bool disposing)

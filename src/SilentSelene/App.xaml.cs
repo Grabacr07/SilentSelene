@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using SilentSelene.Core;
+using SilentSelene.Properties;
 
 namespace SilentSelene;
 
@@ -16,6 +18,10 @@ partial class App
 
         WPFUI.Theme.Watcher.Start(true, true);
 
-        new UI.Timer.Window().Show();
+        var window = new UI.Timer.Window()
+        {
+            DataContext = new UI.Timer.Bindings.Window(INotifier.Default, UserSettings.Default),
+        };
+        window.Show();
     }
 }

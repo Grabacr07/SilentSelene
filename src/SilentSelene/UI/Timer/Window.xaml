@@ -20,7 +20,7 @@
         SizeToContent="Height"
         ResizeMode="CanMinimize"
         UseLayoutRounding="True"
-        d:DataContext="{d:DesignInstance {x:Type binds:Window}, IsDesignTimeCreatable=True}">
+        d:DataContext="{d:DesignInstance {x:Type binds:DesignTimeWindow}, IsDesignTimeCreatable=True}">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="1"
                       CornerRadius="0"
@@ -51,10 +51,6 @@
                                                       IsOwned="False" />
         </livet:InteractionMessageTrigger>
     </b:Interaction.Triggers>
-
-    <Window.DataContext>
-        <binds:Window />
-    </Window.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>

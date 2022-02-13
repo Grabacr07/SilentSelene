@@ -65,22 +65,4 @@
                 Value="4" />
     </Style>
 
-    <Style x:Key="ReadOnlyTextBoxStyleKey"
-           TargetType="{x:Type TextBox}">
-        <Setter Property="BorderThickness"
-                Value="0" />
-        <Setter Property="IsReadOnly"
-                Value="True" />
-        <Setter Property="TextWrapping"
-                Value="Wrap" />
-        <Setter Property="Background"
-                Value="Transparent" />
-        <Setter Property="Foreground"
-                Value="{DynamicResource TextFillColorTertiaryBrush}" />
-        <Setter Property="FontSize"
-                Value="12" />
-        <Setter Property="VerticalContentAlignment"
-                Value="Center" />
-    </Style>
-
 </ResourceDictionary>

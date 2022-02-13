@@ -13,10 +13,7 @@ public class Manual : ViewModel
     public ResinTimer ResinTimer { get; }
 
     public IReactiveProperty<string> NewResin { get; }
-
-    public Manual()
-        : this(new ResinTimer()) { }
-
+    
     public Manual(ResinTimer resinTimer)
     {
         this.ResinTimer = resinTimer;

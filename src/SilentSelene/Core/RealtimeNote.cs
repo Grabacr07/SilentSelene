@@ -11,12 +11,13 @@ namespace SilentSelene.Core;
 
 public class RealtimeNote : ResinTimer
 {
+    private readonly UserSettings _settings;
     private readonly ReactiveProperty<DateTimeOffset> _coinOverflowingTime = new(DateTimeOffset.Now);
     private readonly ReactiveProperty<TimeSpan> _coinRemainingTime = new();
     private readonly ReactiveProperty<int> _currentCoin = new();
-    private readonly ReactiveProperty<int> _maxCoin = new();
+    private readonly ReactiveProperty<int> _maxCoin = new(2400);
     private readonly ReactiveProperty<int> _finishedTask = new();
-    private readonly ReactiveProperty<int> _totalTask = new();
+    private readonly ReactiveProperty<int> _totalTask = new(4);
     private readonly ReactiveProperty<bool> _isTaskRewardReceived = new();
     private readonly ReactiveProperty<bool> _hasError = new();
     private readonly TimeSpan _interval = new(0, 15, 0);
@@ -47,13 +48,11 @@ public class RealtimeNote : ResinTimer
     public IReadOnlyReactiveProperty<bool> HasError
         => this._hasError;
 
-    public RealtimeNote()
-        : this(INotifier.Default, UserSettings.Default.uid, UserSettings.Default.ltuid, UserSettings.Default.ltoken) { }
-
-    public RealtimeNote(INotifier notifier, string uid, string ltuid, string ltoken)
-        : base(notifier)
+    internal RealtimeNote(INotifier notifier, UserSettings settings)
+        : base(notifier, settings)
     {
-        this._manager = new GenshinInfoManager(uid, ltuid, ltoken);
+        this._settings = settings;
+        this._manager = new GenshinInfoManager(settings.uid, settings.ltuid, settings.ltoken);
     }
 
     public async Task<bool> Check()
@@ -79,6 +78,9 @@ public class RealtimeNote : ResinTimer
 
         return true;
     }
+
+    public Task<bool> UpdateAuthInfo()
+        => this.UpdateAuthInfo(this._settings.uid, this._settings.ltuid, this._settings.ltoken);
 
     public Task<bool> UpdateAuthInfo(string uid, string ltuid, string ltoken)
     {

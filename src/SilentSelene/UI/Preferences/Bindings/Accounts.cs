@@ -21,22 +21,26 @@ public class Accounts : ViewModel
 
     public IReactiveProperty<string> Ltoken { get; }
 
-    public Accounts()
+    internal Accounts(UserSettings settings)
     {
-        this.UseRealtimeNoteApi = UserSettings.Default
-            .ToReactivePropertyAsSynchronized(x => x.UseRealtimeNoteApi);
+        this.UseRealtimeNoteApi = settings
+            .ToReactivePropertyAsSynchronized(x => x.UseRealtimeNoteApi)
+            .AddTo(this.CompositeDisposable);
 
         this.UseRealtimeNoteApiLabel = this.UseRealtimeNoteApi
             .Select(x => x ? "オン" : "オフ")
             .ToReadOnlyReactiveProperty("");
 
-        this.Uid = UserSettings.Default
-            .ToReactivePropertyAsSynchronized(x => x.uid);
+        this.Uid = settings
+            .ToReactivePropertyAsSynchronized(x => x.uid)
+            .AddTo(this.CompositeDisposable);
 
-        this.Ltuid = UserSettings.Default
-            .ToReactivePropertyAsSynchronized(x => x.ltuid);
+        this.Ltuid = settings
+            .ToReactivePropertyAsSynchronized(x => x.ltuid)
+            .AddTo(this.CompositeDisposable);
 
-        this.Ltoken = UserSettings.Default
-            .ToReactivePropertyAsSynchronized(x => x.ltoken);
+        this.Ltoken = settings
+            .ToReactivePropertyAsSynchronized(x => x.ltoken)
+            .AddTo(this.CompositeDisposable);
     }
 }

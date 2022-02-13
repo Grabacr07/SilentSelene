@@ -12,7 +12,7 @@
       Title="アプリ設定"
       d:DesignWidth="800"
       d:DesignHeight="450"
-      d:DataContext="{d:DesignInstance {x:Type binds:Generals}, IsDesignTimeCreatable=True}">
+      d:DataContext="{d:DesignInstance {x:Type binds:DesignTimeGenerals}, IsDesignTimeCreatable=True}">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

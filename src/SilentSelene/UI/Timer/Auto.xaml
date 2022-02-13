@@ -8,7 +8,6 @@
              xmlns:metro="http://schemes.grabacr.net/winfx/2015/personal/controls"
              xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
              xmlns:binds="clr-namespace:SilentSelene.UI.Timer.Bindings"
-             xmlns:primitives="clr-namespace:SilentSelene.UI.Controls.Primitives"
              mc:Ignorable="d"
              d:DesignWidth="420"
              d:DataContext="{d:DesignInstance {x:Type binds:DesignTimeAuto}, IsDesignTimeCreatable=True}">

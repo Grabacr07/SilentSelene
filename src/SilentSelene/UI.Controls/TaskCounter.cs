@@ -26,7 +26,7 @@ public class TaskCounter : Control
             nameof(Total),
             typeof(int),
             typeof(TaskCounter),
-            new PropertyMetadata(default(int), HandlePropertyChanged));
+            new PropertyMetadata(4, HandlePropertyChanged));
 
     public int Total
     {

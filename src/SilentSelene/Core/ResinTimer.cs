@@ -15,6 +15,7 @@ public class ResinTimer : IDisposable
     private const int _minutesOfResin = 8;
 
     private readonly INotifier _notifier;
+    private readonly UserSettings _settings;
     private readonly ReactiveProperty<DateTimeOffset> _overflowingTime = new();
     private readonly ReactiveProperty<TimeSpan> _remainingTime = new();
     private readonly ReactiveProperty<int> _currentResin = new();
@@ -36,19 +37,17 @@ public class ResinTimer : IDisposable
 
     public IReadOnlyReactiveProperty<bool> IsOverflow { get; }
 
-    public ResinTimer()
-        : this(INotifier.Default) { }
-
-    public ResinTimer(INotifier notifier)
+    internal ResinTimer(INotifier notifier, UserSettings settings)
     {
         this._notifier = notifier;
+        this._settings = settings;
 
-        this.MaxResin = UserSettings.Default.ToReactivePropertyAsSynchronized(x => x.MaxResin);
-        this.MinResin = UserSettings.Default.ToReactivePropertyAsSynchronized(x => x.MinResin);
+        this.MaxResin = settings.ToReactivePropertyAsSynchronized(x => x.MaxResin);
+        this.MinResin = settings.ToReactivePropertyAsSynchronized(x => x.MinResin);
 
         this.IsOverflow = this._currentResin
             .CombineLatest(
-                UserSettings.Default
+                settings
                     .ToReactivePropertyAsSynchronized(x => x.OverflowResin)
                     .AddTo(this._compositeDisposable))
             .Select<(int current, int overflow), bool>(x => x.current >= x.overflow)
@@ -58,7 +57,7 @@ public class ResinTimer : IDisposable
             .Where(x => x)
             .Subscribe(_ => this.NotifyOverflow());
 
-        var latest = UserSettings.Default.LatestOverflowTime;
+        var latest = settings.LatestOverflowTime;
         if (latest > DateTimeOffset.Now)
         {
             this._overflowingTime.Value = latest;
@@ -76,8 +75,8 @@ public class ResinTimer : IDisposable
             .Subscribe(
                 x =>
                 {
-                    UserSettings.Default.LatestOverflowTime = x;
-                    UserSettings.Default.Save();
+                    settings.LatestOverflowTime = x;
+                    settings.Save();
                 });
 
         this._systemTimer.Elapsed += (_, args) => this.Tick(new DateTimeOffset(args.SignalTime));
@@ -116,7 +115,7 @@ public class ResinTimer : IDisposable
 
     private void NotifyOverflow()
     {
-        if (UserSettings.Default.NotifyOverflow)
+        if (this._settings.NotifyOverflow)
         {
             this._notifier.Notify(
                 "天然樹脂が回復しました",

@@ -19,13 +19,13 @@ public class CheckItem : Control
     public static readonly DependencyProperty IsCheckedProperty
         = DependencyProperty.Register(
             nameof(IsChecked),
-            typeof(bool),
+            typeof(bool?),
             typeof(CheckItem),
             new PropertyMetadata(BooleanBoxes.FalseBox));
 
-    public bool IsChecked
+    public bool? IsChecked
     {
-        get => (bool)this.GetValue(IsCheckedProperty);
+        get => (bool?)this.GetValue(IsCheckedProperty);
         set => this.SetValue(IsCheckedProperty, value);
     }
 
