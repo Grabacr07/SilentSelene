@@ -20,7 +20,6 @@ public class RealtimeNote : ResinTimer
     private readonly ReactiveProperty<int> _totalTask = new(4);
     private readonly ReactiveProperty<bool> _isTaskRewardReceived = new();
     private readonly ReactiveProperty<bool> _hasError = new();
-    private readonly TimeSpan _interval = new(0, 15, 0);
     private GenshinInfoManager _manager;
     private DateTimeOffset _next;
 
@@ -68,6 +67,8 @@ public class RealtimeNote : ResinTimer
         if (check == false) return false;
 
         var note = await this._manager.GetRealTimeNotes();
+        if (note == null) return false;
+
         this.EnsureOverflowingRange(DateTimeOffset.Now.Add(note.ResinRecoveryTime));
         this._coinOverflowingTime.Value = DateTimeOffset.Now.Add(note.HomeCoinRecoveryTime);
         this._currentCoin.Value = note.CurrentHomeCoin;
@@ -99,8 +100,8 @@ public class RealtimeNote : ResinTimer
 
         var dateline = new DateTimeOffset(signalTime.Year, signalTime.Month, signalTime.Day, 5, 0, 0, signalTime.Offset);
         this._next = signalTime >= dateline
-            ? signalTime.Add(this._interval)
-            : DateTimeUtil.Earlier(dateline, signalTime.Add(this._interval));
+            ? signalTime.Add(this._settings.ApiRequestInterval)
+            : DateTimeUtil.Earlier(dateline, signalTime.Add(this._settings.ApiRequestInterval));
 
         this.Reload().Forget();
     }

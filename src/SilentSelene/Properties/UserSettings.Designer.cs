@@ -154,5 +154,17 @@ namespace SilentSelene.Properties {
                 this["UseRealtimeNoteApi"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:10:00")]
+        public global::System.TimeSpan ApiRequestInterval {
+            get {
+                return ((global::System.TimeSpan)(this["ApiRequestInterval"]));
+            }
+            set {
+                this["ApiRequestInterval"] = value;
+            }
+        }
     }
 }
