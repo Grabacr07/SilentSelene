@@ -1,27 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using MetroTrilithon.Threading.Tasks;
+using MetroTrilithon.UI;
 using SilentSelene.Core;
 using SilentSelene.Properties;
+using SilentSelene.Reporting;
 
 namespace SilentSelene;
 
 partial class App
 {
+    static App()
+    {
+        AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+        {
+            if (args.ExceptionObject is Exception exception) IReporter.Instance.ReportException(sender, exception);
+        };
+    }
+
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
 
+        TaskLog.Occurred += (sender, args) => IReporter.Instance.ReportException(sender ?? typeof(TaskLog), args.Exception);
+        UIDispatcher.Instance = this.Dispatcher;
         WPFUI.Theme.Watcher.Start(true, true);
 
-        var window = new UI.Timer.Window()
+        this.DispatcherUnhandledException += (sender, args) =>
         {
-            DataContext = new UI.Timer.Bindings.Window(INotifier.Default, UserSettings.Default),
+            IReporter.Instance.ReportException(sender, args.Exception);
+            args.Handled = true;
         };
-        window.Show();
+
+        this.Break();
+
+        var context = new UI.Timer.Bindings.Window(INotifier.Default, UserSettings.Default);
+        var window = new UI.Timer.Window() { DataContext = context, };
+
+        this.ShutdownMode = ShutdownMode.OnMainWindowClose;
+        this.MainWindow = window;
+        this.MainWindow.Show();
     }
+
+    partial void Break();
 }
