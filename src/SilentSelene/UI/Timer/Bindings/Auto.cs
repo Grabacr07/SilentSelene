@@ -18,8 +18,8 @@ public class Auto : ViewModel
     public Auto(RealtimeNote realtimeNote)
     {
         this.RealtimeNote = realtimeNote;
-        this.IsActive = realtimeNote.HasError
-            .Select(x => x == false)
+        this.IsActive = realtimeNote.Status
+            .Select(x => x == RealtimeNoteStatus.Active)
             .ToReadOnlyReactiveProperty()
             .AddTo(this.CompositeDisposable);
     }

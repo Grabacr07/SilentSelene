@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using GenshinInfo.Managers;
 using MetroTrilithon.Threading.Tasks;
 using Reactive.Bindings;
@@ -8,6 +9,13 @@ using SilentSelene.Properties;
 using SilentSelene.Utils;
 
 namespace SilentSelene.Core;
+
+public enum RealtimeNoteStatus
+{
+    Active,
+    AuthError,
+    NoteError,
+}
 
 public class RealtimeNote : ResinTimer
 {
@@ -19,9 +27,9 @@ public class RealtimeNote : ResinTimer
     private readonly ReactiveProperty<int> _finishedTask = new();
     private readonly ReactiveProperty<int> _totalTask = new(4);
     private readonly ReactiveProperty<bool> _isTaskRewardReceived = new();
-    private readonly ReactiveProperty<bool> _hasError = new();
+    private readonly ReactiveProperty<RealtimeNoteStatus> _status = new();
     private GenshinInfoManager _manager;
-    private DateTimeOffset _next;
+    private DateTimeOffset _nextReload;
 
     public IReadOnlyReactiveProperty<DateTimeOffset> CoinOverflowingTime
         => this._coinOverflowingTime;
@@ -44,9 +52,9 @@ public class RealtimeNote : ResinTimer
     public IReadOnlyReactiveProperty<bool> IsTaskRewardReceived
         => this._isTaskRewardReceived;
 
-    public IReadOnlyReactiveProperty<bool> HasError
-        => this._hasError;
-
+    public IReadOnlyReactiveProperty<RealtimeNoteStatus> Status
+        => this._status;
+    
     internal RealtimeNote(INotifier notifier, UserSettings settings)
         : base(notifier, settings)
     {
@@ -54,20 +62,37 @@ public class RealtimeNote : ResinTimer
         this._manager = new GenshinInfoManager(settings.uid, settings.ltuid, settings.ltoken);
     }
 
-    public async Task<bool> Check()
+    public Task<bool> Check()
+        => this.CheckCore(true);
+
+    public async Task<bool> CheckCore(bool updateStatus)
     {
         var success = await this._manager.CheckLogin();
-        this._hasError.Value = success == false;
+        if (success && this._status.Value != RealtimeNoteStatus.Active && updateStatus)
+        {
+            this._status.Value = RealtimeNoteStatus.Active;
+        }
+
         return success;
     }
 
     public async Task<bool> Reload()
     {
-        var check = await this.Check();
-        if (check == false) return false;
+        var check = await this.CheckCore(false);
+        if (check == false)
+        {
+            this._status.Value = RealtimeNoteStatus.AuthError;
+            this._nextReload = DateTimeUtil.Earlier(this._nextReload, DateTimeOffset.Now.AddSeconds(30));
+            return false;
+        }
 
         var note = await this._manager.GetRealTimeNotes();
-        if (note == null) return false;
+        if (note == null)
+        {
+            this._status.Value = RealtimeNoteStatus.NoteError;
+            this._nextReload = DateTimeUtil.Earlier(this._nextReload, DateTimeOffset.Now.AddSeconds(30));
+            return false;
+        }
 
         this.EnsureOverflowingRange(DateTimeOffset.Now.Add(note.ResinRecoveryTime));
         this._coinOverflowingTime.Value = DateTimeOffset.Now.Add(note.HomeCoinRecoveryTime);
@@ -77,6 +102,7 @@ public class RealtimeNote : ResinTimer
         this._totalTask.Value = note.TotalTaskNum;
         this._isTaskRewardReceived.Value = note.IsExtraTaskRewardReceived;
 
+        this._status.Value = RealtimeNoteStatus.Active;
         return true;
     }
 
@@ -96,10 +122,10 @@ public class RealtimeNote : ResinTimer
 
         this._coinRemainingTime.Value = this._coinOverflowingTime.Value.Subtract(signalTime);
 
-        if (signalTime < this._next) return;
+        if (signalTime < this._nextReload) return;
 
         var dateline = new DateTimeOffset(signalTime.Year, signalTime.Month, signalTime.Day, 5, 0, 0, signalTime.Offset);
-        this._next = signalTime >= dateline
+        this._nextReload = signalTime >= dateline
             ? signalTime.Add(this._settings.ApiRequestInterval)
             : DateTimeUtil.Earlier(dateline, signalTime.Add(this._settings.ApiRequestInterval));
 
