@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
+using SilentSelene.Reporting;
 
 namespace SilentSelene.UI.Controls;
 
@@ -44,7 +45,7 @@ public class OpenUriHyperlink : Hyperlink
         }
         catch (Exception ex)
         {
-            // ToDo:
+            IReporter.Instance.ReportException(this, ex);
         }
     }
 }

@@ -25,7 +25,7 @@ public partial class ApplicationInsightsReporter : IReporter
     public void ReportException(
         object sender,
         Exception exception,
-        [CallerFilePath] string callerPath = default!,
+        [CallerFilePath] string? callerPath = default!,
         [CallerLineNumber] int callerLineNumber = default)
     {
         var senderType = sender is Type t ? t : sender.GetType();

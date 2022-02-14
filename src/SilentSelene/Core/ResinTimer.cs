@@ -20,7 +20,8 @@ public class ResinTimer : IDisposable
     private readonly ReactiveProperty<TimeSpan> _remainingTime = new();
     private readonly ReactiveProperty<int> _currentResin = new();
     private readonly SystemTimer _systemTimer = new(500);
-    private readonly CompositeDisposable _compositeDisposable = new();
+
+    protected CompositeDisposable CompositeDisposable { get; } = new();
 
     public IReadOnlyReactiveProperty<int> MaxResin { get; }
 
@@ -42,14 +43,18 @@ public class ResinTimer : IDisposable
         this._notifier = notifier;
         this._settings = settings;
 
-        this.MaxResin = settings.ToReactivePropertyAsSynchronized(x => x.MaxResin);
-        this.MinResin = settings.ToReactivePropertyAsSynchronized(x => x.MinResin);
+        this.MaxResin = settings
+            .ToReactivePropertyAsSynchronized(x => x.MaxResin)
+            .AddTo(this.CompositeDisposable);
+        this.MinResin = settings
+            .ToReactivePropertyAsSynchronized(x => x.MinResin)
+            .AddTo(this.CompositeDisposable);
 
         this.IsOverflow = this._currentResin
             .CombineLatest(
                 settings
                     .ToReactivePropertyAsSynchronized(x => x.OverflowResin)
-                    .AddTo(this._compositeDisposable))
+                    .AddTo(this.CompositeDisposable))
             .Select<(int current, int overflow), bool>(x => x.current >= x.overflow)
             .ToReadOnlyReactiveProperty();
 
@@ -134,6 +139,7 @@ public class ResinTimer : IDisposable
         if (disposing)
         {
             this._systemTimer.Dispose();
+            this.CompositeDisposable.Dispose();
         }
     }
 }
