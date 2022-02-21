@@ -68,9 +68,14 @@ public class RealtimeNote : ResinTimer
     public async Task<bool> CheckCore(bool updateStatus)
     {
         var success = await this._manager.CheckLogin();
-        if (success && this._status.Value != RealtimeNoteStatus.Active && updateStatus)
+        if (updateStatus)
         {
-            this._status.Value = RealtimeNoteStatus.Active;
+            this._status.Value = success switch
+            {
+                true when this._status.Value != RealtimeNoteStatus.Active => RealtimeNoteStatus.Active,
+                false when this._status.Value != RealtimeNoteStatus.AuthError => RealtimeNoteStatus.AuthError,
+                _ => this._status.Value
+            };
         }
 
         return success;
