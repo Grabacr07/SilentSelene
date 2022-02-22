@@ -114,7 +114,7 @@ public class ResinTimer : IDisposable
     {
         var remaining = this._overflowingTime.Value.Subtract(signalTime);
 
-        this._remainingTime.Value = remaining;
+        this._remainingTime.Value = remaining.TotalSeconds > 0 ? remaining : TimeSpan.Zero;
         this._currentResin.Value = (this.MaxResin.Value - (int)Math.Ceiling(remaining.TotalMinutes / _minutesOfResin)).EnsureRange(this.MinResin.Value, this.MaxResin.Value);
     }
 

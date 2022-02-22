@@ -125,7 +125,8 @@ public class RealtimeNote : ResinTimer
     {
         base.Tick(signalTime);
 
-        this._coinRemainingTime.Value = this._coinOverflowingTime.Value.Subtract(signalTime);
+        var remaining = this._coinOverflowingTime.Value.Subtract(signalTime);
+        this._coinRemainingTime.Value = remaining.TotalSeconds > 0 ? remaining : TimeSpan.Zero;
 
         if (signalTime < this._nextReload) return;
 
