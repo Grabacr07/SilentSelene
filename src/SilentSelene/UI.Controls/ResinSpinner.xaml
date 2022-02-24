@@ -3,6 +3,8 @@
                     xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
                     xmlns:props="clr-namespace:SilentSelene.Properties">
 
+    <ctrls:RemainingConverter x:Key="RemainingConverterKey" />
+
     <Style TargetType="ctrls:ResinSpinner">
         <Setter Property="Maximum"
                 Value="{Binding Source={x:Static props:UserSettings.Default}, Path=MaxResin}" />
@@ -45,7 +47,7 @@
                             <Border Background="{DynamicResource TextFillColorTertiaryBrush}"
                                     Width="90"
                                     Height=".99" />
-                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RemainingTime, StringFormat={}{0:hh\\:mm\\:ss}, ConverterCulture=ja-jP}"
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RemainingTime, Converter={StaticResource RemainingConverterKey}}"
                                        FontSize="22" />
                             <Border Height="12" />
                         </StackPanel>
