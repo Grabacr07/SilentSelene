@@ -100,7 +100,7 @@
                 </Viewbox>
             </metro:CallMethodButton>
             <metro:CallMethodButton MethodName="Close"
-                                    Background="{DynamicResource PaletteRedBrush}"
+                                    HoverBackground="{DynamicResource PaletteRedBrush}"
                                     KeyboardNavigation.IsTabStop="False"
                                     Style="{StaticResource UiTitlebarButton}">
                 <Viewbox Width="11"

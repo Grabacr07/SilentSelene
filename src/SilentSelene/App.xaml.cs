@@ -26,8 +26,7 @@ partial class App
 
         TaskLog.Occurred += (sender, args) => IReporter.Instance.ReportException(sender ?? typeof(TaskLog), args.Exception);
         UIDispatcher.Instance = this.Dispatcher;
-        WPFUI.Theme.Watcher.Start(true, true);
-
+        
         this.DispatcherUnhandledException += (sender, args) =>
         {
             IReporter.Instance.ReportException(sender, args.Exception);

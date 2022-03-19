@@ -11,4 +11,12 @@ public class DebugFeatures
     }
 }
 
+partial class App
+{
+    partial void Break()
+    {
+        //new UI.Preferences.Window().Show();
+    }
+}
+
 #endif
