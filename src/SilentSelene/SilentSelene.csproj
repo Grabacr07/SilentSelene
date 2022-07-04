@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GenshinInfo" Version="1.0.1" />
+    <PackageReference Include="GenshinInfo" Version="1.0.5" />
     <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
     <PackageReference Include="LivetCask" Version="4.0.2" />
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.20.0" />
