@@ -8,12 +8,12 @@ A resin timer for Genshin Impact on Windows 11.
 
 ## Features
 
-* Resin input (manual)
+* Resin input (manual or auto)
 * Display current resin
 * Show desktop notifications when resin overflows
 
-![](https://user-images.githubusercontent.com/1779073/108632959-efbcdf80-74b4-11eb-8434-895e6a488ada.png)
-![](https://user-images.githubusercontent.com/1779073/108633023-4fb38600-74b5-11eb-9642-a3cc223ceb07.png)
+![](https://user-images.githubusercontent.com/1779073/177365639-61842d50-61a3-4372-b3f3-754fdee6ba62.png)
+![](https://user-images.githubusercontent.com/1779073/177368877-4a72fedd-64d1-40fb-a334-2acc5b0ec371.png)
 
 
 ## Requirements
