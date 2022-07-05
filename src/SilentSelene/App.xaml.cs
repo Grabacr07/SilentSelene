@@ -20,6 +20,11 @@ partial class App
         };
     }
 
+    public App()
+    {
+        SettingsUtil.Update();
+    }
+
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
