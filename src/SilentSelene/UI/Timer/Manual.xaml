@@ -67,6 +67,8 @@
                                 Value="4" />
                         <Setter Property="Margin"
                                 Value="4" />
+                        <Setter Property="HorizontalAlignment"
+                                Value="Stretch" />
                     </Style>
                 </Panel.Resources>
                 <metro:CallMethodButton Content="-60"
