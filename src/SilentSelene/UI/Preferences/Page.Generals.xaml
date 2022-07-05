@@ -5,7 +5,8 @@
       xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
-      xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+      xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:ctrls="http://schemes.grabacr.net/winfx/2015/personal/controls"
       xmlns:local="clr-namespace:SilentSelene.UI.Preferences"
       xmlns:binds="clr-namespace:SilentSelene.UI.Preferences.Bindings"
       mc:Ignorable="d"
@@ -22,13 +23,12 @@
     </Page.Resources>
 
     <DockPanel>
-        <TextBlock DockPanel.Dock="Top"
-                   Style="{DynamicResource BreadcrumbTextStyle}" />
-
         <StackPanel Style="{DynamicResource PageContentHostStyle}">
-            <wpfui:CardExpander Icon="WindowWrench48"
-                                Header="タイマー表示"
-                                Subtitle="タイマーを表示するミニ ウィンドウの動作を設定します。">
+            <wpfui:CardExpander Icon="WindowWrench48">
+                <wpfui:CardExpander.Header>
+                    <ctrls:TextPair Text="タイマー表示"
+                                    SubText="タイマーを表示するミニ ウィンドウの動作を設定します。" />
+                </wpfui:CardExpander.Header>
                 <StackPanel Style="{DynamicResource ExpanderContentHostStyle}">
                     <CheckBox Content=" 常に最前面に表示する "
                               IsChecked="{Binding TopMost.Value, Mode=TwoWay}" />
@@ -43,18 +43,26 @@
                     </CheckBox>
                 </StackPanel>
             </wpfui:CardExpander>
-            <wpfui:CardExpander Icon="Alert32"
-                                Header="デスクトップ通知"
-                                Subtitle="天然樹脂が回復したらデスクトップに通知します。">
-                <wpfui:CardExpander.HeaderContent>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding NotifyOverFlowLabel.Value, Mode=OneWay}"
-                                   FontSize="14"
-                                   VerticalAlignment="Center" />
-                        <wpfui:ToggleSwitch IsChecked="{Binding NotifyOverflow.Value, Mode=TwoWay}"
-                                            Margin="12,0" />
-                    </StackPanel>
-                </wpfui:CardExpander.HeaderContent>
+            <wpfui:CardExpander Icon="Alert32">
+                <wpfui:CardExpander.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ctrls:TextPair Grid.Column="0"
+                                        Text="デスクトップ通知"
+                                        SubText="天然樹脂が回復したらデスクトップに通知します。" />
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <TextBlock Text="{Binding NotifyOverFlowLabel.Value, Mode=OneWay}"
+                                       FontSize="14"
+                                       VerticalAlignment="Center" />
+                            <wpfui:ToggleSwitch IsChecked="{Binding NotifyOverflow.Value, Mode=TwoWay}"
+                                                Margin="12,0" />
+                        </StackPanel>
+                    </Grid>
+                </wpfui:CardExpander.Header>
                 <StackPanel Style="{DynamicResource ExpanderContentHostStyle}"
                             IsEnabled="{Binding NotifyOverflow.Value, Mode=OneWay}">
                     <DockPanel>
@@ -66,7 +74,8 @@
                     </DockPanel>
                     <Border Style="{DynamicResource ExpanderContentSeparatorStyle}" />
                     <wpfui:Hyperlink Content="通知のテスト"
-                                     Margin="-4,0">
+                                     Icon="AlertOn24"
+                                     Margin="0,0,0,-4">
                         <b:Interaction.Triggers>
                             <b:EventTrigger EventName="Click">
                                 <livet:LivetCallMethodAction MethodTarget="{Binding}"

@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI">
+                    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml">
 
     <Style TargetType="{x:Type wpfui:CardExpander}"
            BasedOn="{StaticResource {x:Type wpfui:CardExpander}}">

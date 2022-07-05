@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResinTimer.old", "ResinTimer.old\ResinTimer.old.csproj", "{C8DD4E63-9D43-46CF-B98C-9E9806286D74}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SilentSelene", "SilentSelene\SilentSelene.csproj", "{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetroTrilithon", "MetroTrilithon\src\MetroTrilithon\MetroTrilithon.csproj", "{C1CE5885-0C07-436D-AE6B-CCE47EED3A22}"
@@ -34,8 +32,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C8DD4E63-9D43-46CF-B98C-9E9806286D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8DD4E63-9D43-46CF-B98C-9E9806286D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F87CBF1-8F3C-4D60-80B3-0ADF96C68C33}.Release|Any CPU.ActiveCfg = Release|Any CPU

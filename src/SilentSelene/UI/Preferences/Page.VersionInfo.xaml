@@ -5,11 +5,12 @@
       xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
-      xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+      xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:local="clr-namespace:SilentSelene.UI.Preferences"
       xmlns:binds="clr-namespace:SilentSelene.UI.Preferences.Bindings"
       xmlns:props="clr-namespace:SilentSelene.Properties"
       xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
+      xmlns:metro="http://schemes.grabacr.net/winfx/2015/personal/controls"
       mc:Ignorable="d"
       Title="バージョン情報"
       d:DesignWidth="800"
@@ -70,8 +71,10 @@
         <ItemsControl ItemsSource="{Binding Source={x:Static props:LicenseInfo.All}, Mode=OneTime}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type props:LicenseInfo}">
-                    <wpfui:CardExpander Icon="DocumentText24"
-                                        Header="{Binding ProductName, Mode=OneTime}">
+                    <wpfui:CardExpander Icon="DocumentText24">
+                        <wpfui:CardExpander.Header>
+                            <metro:TextPair Text="{Binding ProductName, Mode=OneTime}" />
+                        </wpfui:CardExpander.Header>
                         <TextBox Text="{Binding LicenseBody, Mode=OneTime}"
                                  FontFamily="Consolas"
                                  IsReadOnly="True"

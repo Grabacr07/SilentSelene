@@ -1,6 +1,6 @@
 # SilentSelene
 
-A resin timer for Genshin Impact.
+A resin timer for Genshin Impact on Windows 11.
 
 [![Build](https://github.com/Grabacr07/ResinTimer/actions/workflows/build.yml/badge.svg)](https://github.com/Grabacr07/ResinTimer/actions/workflows/build.yml)
 [![License](https://img.shields.io/github/license/Grabacr07/ResinTImer)](LICENSE.md)
@@ -18,7 +18,7 @@ A resin timer for Genshin Impact.
 
 ## Requirements
 
-* Windows 10 (17763) or later
+* Windows 11 (22621) or later
 * .NET 6.0 runtime
 
 

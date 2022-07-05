@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using WPFUI.Appearance;
+using Wpf.Ui.Appearance;
 
 namespace SilentSelene.UI.Timer;
 

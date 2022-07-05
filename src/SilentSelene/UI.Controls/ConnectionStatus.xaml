@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
-                    xmlns:controls="clr-namespace:WPFUI.Controls;assembly=WPFUI">
+                    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml">
 
     <Style TargetType="ctrls:ConnectionStatus">
         <Setter Property="BorderThickness"
@@ -29,9 +29,9 @@
                             CornerRadius="4">
                         <DockPanel HorizontalAlignment="Center"
                                    Margin="4">
-                            <controls:Icon x:Name="Icon"
-                                           Glyph="Checkmark48"
-                                           Margin="2" />
+                            <wpfui:SymbolIcon x:Name="Icon"
+                                              Symbol="Checkmark48"
+                                              Margin="2" />
                             <Border DockPanel.Dock="Right"
                                     Width="8" />
                             <TextBlock x:Name="Text"
@@ -44,7 +44,7 @@
                         <Trigger Property="IsActive"
                                  Value="False">
                             <Setter TargetName="Icon"
-                                    Property="Glyph"
+                                    Property="Symbol"
                                     Value="Dismiss20" />
                             <Setter TargetName="Text"
                                     Property="Text"
