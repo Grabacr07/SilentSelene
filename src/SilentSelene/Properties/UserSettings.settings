@@ -38,5 +38,8 @@
     <Setting Name="ApiRequestInterval" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">00:10:00</Value>
     </Setting>
+    <Setting Name="WindowPlacement" Type="System.Windows.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
