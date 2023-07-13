@@ -4,9 +4,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
-      xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
-      xmlns:ctrls="http://schemes.grabacr.net/winfx/2015/personal/controls"
+      xmlns:metro="http://schemes.grabacr.net/winfx/2015/personal/controls"
       xmlns:local="clr-namespace:SilentSelene.UI.Preferences"
       xmlns:binds="clr-namespace:SilentSelene.UI.Preferences.Bindings"
       mc:Ignorable="d"
@@ -22,69 +22,67 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <DockPanel>
-        <StackPanel Style="{DynamicResource PageContentHostStyle}">
-            <wpfui:CardExpander Icon="WindowWrench48">
-                <wpfui:CardExpander.Header>
-                    <ctrls:TextPair Text="タイマー表示"
-                                    SubText="タイマーを表示するミニ ウィンドウの動作を設定します。" />
-                </wpfui:CardExpander.Header>
-                <StackPanel Style="{DynamicResource ExpanderContentHostStyle}">
-                    <CheckBox Content=" 常に最前面に表示する "
-                              IsChecked="{Binding TopMost.Value, Mode=TwoWay}" />
-                    <Border Style="{DynamicResource ExpanderContentSeparatorStyle}" />
-                    <CheckBox IsChecked="{Binding ShowInTaskbar.Value, Mode=TwoWay}">
-                        <StackPanel>
-                            <TextBlock Text=" タスク バーを表示する" />
-                            <Border Height="2" />
-                            <TextBlock Text=" このチェックをオフにすると、ウィンドウ最小化時はタスクトレイに格納されます。"
-                                       Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
-                        </StackPanel>
-                    </CheckBox>
-                </StackPanel>
-            </wpfui:CardExpander>
-            <wpfui:CardExpander Icon="Alert32">
-                <wpfui:CardExpander.Header>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <ctrls:TextPair Grid.Column="0"
-                                        Text="デスクトップ通知"
-                                        SubText="天然樹脂が回復したらデスクトップに通知します。" />
-                        <StackPanel Grid.Column="1"
-                                    Orientation="Horizontal">
-                            <TextBlock Text="{Binding NotifyOverFlowLabel.Value, Mode=OneWay}"
-                                       FontSize="14"
-                                       VerticalAlignment="Center" />
-                            <wpfui:ToggleSwitch IsChecked="{Binding NotifyOverflow.Value, Mode=TwoWay}"
-                                                Margin="12,0" />
-                        </StackPanel>
-                    </Grid>
-                </wpfui:CardExpander.Header>
-                <StackPanel Style="{DynamicResource ExpanderContentHostStyle}"
-                            IsEnabled="{Binding NotifyOverflow.Value, Mode=OneWay}">
-                    <DockPanel>
-                        <TextBox DockPanel.Dock="Right"
-                                 Text="{Binding OverflowResin.Value, Mode=TwoWay}"
-                                 Width="100" />
-                        <TextBlock Text="樹脂がこの値になったときに通知"
+    <StackPanel Style="{DynamicResource PageContentHostStyle}">
+        <ui:CardExpander Icon="WindowWrench48">
+            <ui:CardExpander.Header>
+                <metro:TextPair Text="タイマー表示"
+                                SubText="タイマーを表示するミニ ウィンドウの動作を設定します。" />
+            </ui:CardExpander.Header>
+            <StackPanel Style="{DynamicResource ExpanderContentHostStyle}">
+                <CheckBox Content=" 常に最前面に表示する "
+                          IsChecked="{Binding TopMost.Value, Mode=TwoWay}" />
+                <Border Style="{DynamicResource ExpanderContentSeparatorStyle}" />
+                <CheckBox IsChecked="{Binding ShowInTaskbar.Value, Mode=TwoWay}">
+                    <StackPanel>
+                        <TextBlock Text=" タスク バーを表示する" />
+                        <Border Height="2" />
+                        <TextBlock Text=" このチェックをオフにすると、ウィンドウ最小化時はタスクトレイに格納されます。"
+                                   Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                    </StackPanel>
+                </CheckBox>
+            </StackPanel>
+        </ui:CardExpander>
+        <ui:CardExpander Icon="Alert32">
+            <ui:CardExpander.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <metro:TextPair Grid.Column="0"
+                                    Text="デスクトップ通知"
+                                    SubText="天然樹脂が回復したらデスクトップに通知します。" />
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal">
+                        <TextBlock Text="{Binding NotifyOverFlowLabel.Value, Mode=OneWay}"
+                                   FontSize="14"
                                    VerticalAlignment="Center" />
-                    </DockPanel>
-                    <Border Style="{DynamicResource ExpanderContentSeparatorStyle}" />
-                    <wpfui:Hyperlink Content="通知のテスト"
-                                     Icon="AlertOn24"
-                                     Margin="0,0,0,-4">
-                        <b:Interaction.Triggers>
-                            <b:EventTrigger EventName="Click">
-                                <livet:LivetCallMethodAction MethodTarget="{Binding}"
-                                                             MethodName="TestNotification" />
-                            </b:EventTrigger>
-                        </b:Interaction.Triggers>
-                    </wpfui:Hyperlink>
-                </StackPanel>
-            </wpfui:CardExpander>
-        </StackPanel>
-    </DockPanel>
+                        <ui:ToggleSwitch IsChecked="{Binding NotifyOverflow.Value, Mode=TwoWay}"
+                                         Margin="12,0" />
+                    </StackPanel>
+                </Grid>
+            </ui:CardExpander.Header>
+            <StackPanel Style="{DynamicResource ExpanderContentHostStyle}"
+                        IsEnabled="{Binding NotifyOverflow.Value, Mode=OneWay}">
+                <DockPanel>
+                    <TextBox DockPanel.Dock="Right"
+                             Text="{Binding OverflowResin.Value, Mode=TwoWay}"
+                             Width="100" />
+                    <TextBlock Text="樹脂がこの値になったときに通知"
+                               VerticalAlignment="Center" />
+                </DockPanel>
+                <Border Style="{DynamicResource ExpanderContentSeparatorStyle}" />
+                <ui:Hyperlink Content="通知のテスト"
+                              Icon="AlertOn24"
+                              Margin="0,0,0,-4">
+                    <b:Interaction.Triggers>
+                        <b:EventTrigger EventName="Click">
+                            <livet:LivetCallMethodAction MethodTarget="{Binding}"
+                                                         MethodName="TestNotification" />
+                        </b:EventTrigger>
+                    </b:Interaction.Triggers>
+                </ui:Hyperlink>
+            </StackPanel>
+        </ui:CardExpander>
+    </StackPanel>
 </Page>

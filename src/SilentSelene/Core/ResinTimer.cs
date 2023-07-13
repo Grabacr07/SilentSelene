@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using MetroTrilithon;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 using SilentSelene.Properties;
@@ -73,9 +74,7 @@ public class ResinTimer : IDisposable
         }
 
         this._overflowingTime
-#if DEBUG
-            .Where(_ => MetroTrilithon.DebugFeatures.IsInDesignMode == false)
-#endif
+            .StopIfInDesignMode()
             .Skip(1)
             .Subscribe(
                 x =>

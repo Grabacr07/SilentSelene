@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
              xmlns:metro="http://schemes.grabacr.net/winfx/2015/personal/controls"
              xmlns:ctrls="clr-namespace:SilentSelene.UI.Controls"
@@ -31,19 +32,19 @@
             </DockPanel>
 
             <DockPanel Margin="2">
-                <metro:CallMethodButton DockPanel.Dock="Right"
-                                        Content="更新"
-                                        Icon="ArrowClockwise32"
-                                        MethodName="Update"
-                                        VerticalAlignment="Stretch"
-                                        Padding="24,0"
-                                        Margin="1" />
+                <ui:Button DockPanel.Dock="Right"
+                           Content="更新"
+                           metro:Click.CallMethod="{metro:Method Update}"
+                           Icon="ArrowClockwise32"
+                           VerticalAlignment="Stretch"
+                           Padding="24,0"
+                           Margin="1" />
                 <Border Width="4"
                         DockPanel.Dock="Right" />
-                <metro:PromptTextBox Text="{Binding NewResin.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Prompt="樹脂の入力"
-                                     FontSize="16"
-                                     Margin="2">
+                <ui:TextBox Text="{Binding NewResin.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            PlaceholderText="樹脂の入力"
+                            FontSize="16"
+                            Margin="2">
                     <b:Interaction.Triggers>
                         <b:KeyTrigger Key="Return"
                                       FiredOn="KeyDown">
@@ -51,16 +52,14 @@
                                                          MethodName="Update" />
                         </b:KeyTrigger>
                     </b:Interaction.Triggers>
-                </metro:PromptTextBox>
+                </ui:TextBox>
             </DockPanel>
 
             <UniformGrid Rows="1"
                          Margin="0">
                 <Panel.Resources>
-                    <Style TargetType="metro:CallMethodButton"
-                           BasedOn="{StaticResource {x:Type metro:CallMethodButton}}">
-                        <Setter Property="MethodName"
-                                Value="Increase" />
+                    <Style TargetType="ui:Button"
+                           BasedOn="{StaticResource {x:Type ui:Button}}">
                         <Setter Property="Appearance"
                                 Value="Secondary" />
                         <Setter Property="Padding"
@@ -71,16 +70,16 @@
                                 Value="Stretch" />
                     </Style>
                 </Panel.Resources>
-                <metro:CallMethodButton Content="-60"
-                                        MethodParameter="-60" />
-                <metro:CallMethodButton Content="-40"
-                                        MethodParameter="-40" />
-                <metro:CallMethodButton Content="-30"
-                                        MethodParameter="-30" />
-                <metro:CallMethodButton Content="-20"
-                                        MethodParameter="-20" />
-                <metro:CallMethodButton Content="+60"
-                                        MethodParameter="60" />
+                <ui:Button Content="-60"
+                           metro:Click.CallMethod="{metro:Method Increase, Parameter=-60}" />
+                <ui:Button Content="-40"
+                           metro:Click.CallMethod="{metro:Method Increase, Parameter=-40}" />
+                <ui:Button Content="-30"
+                           metro:Click.CallMethod="{metro:Method Increase, Parameter=-30}" />
+                <ui:Button Content="-20"
+                           metro:Click.CallMethod="{metro:Method Increase, Parameter=-20}" />
+                <ui:Button Content="60"
+                           metro:Click.CallMethod="{metro:Method Increase, Parameter=60}" />
             </UniformGrid>
         </StackPanel>
     </DockPanel>

@@ -4,9 +4,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
-      xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
-      xmlns:ctrls="http://schemes.grabacr.net/winfx/2015/personal/controls"
+      xmlns:metro="http://schemes.grabacr.net/winfx/2015/personal/controls"
       xmlns:local="clr-namespace:SilentSelene.UI.Preferences"
       xmlns:binds="clr-namespace:SilentSelene.UI.Preferences.Bindings"
       mc:Ignorable="d"
@@ -24,14 +24,14 @@
 
     <DockPanel>
         <StackPanel Style="{DynamicResource PageContentHostStyle}">
-            <wpfui:CardExpander Icon="ArrowSync24">
-                <wpfui:CardExpander.Header>
+            <ui:CardExpander Icon="ArrowSync24">
+                <ui:CardExpander.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <ctrls:TextPair Grid.Column="0"
+                        <metro:TextPair Grid.Column="0"
                                         Text="リアルタイムノート API を使用する"
                                         SubText="天然樹脂やデイリー任務の状況を自動的に取得します。" />
                         <StackPanel Grid.Column="1"
@@ -39,12 +39,12 @@
                             <TextBlock Text="{Binding UseRealtimeNoteApiLabel.Value, Mode=OneWay}"
                                        FontSize="14"
                                        VerticalAlignment="Center" />
-                            <wpfui:ToggleSwitch IsChecked="{Binding UseRealtimeNoteApi.Value, Mode=TwoWay}"
-                                                Margin="12,0" />
+                            <ui:ToggleSwitch IsChecked="{Binding UseRealtimeNoteApi.Value, Mode=TwoWay}"
+                                             Margin="12,0" />
                         </StackPanel>
                     </Grid>
 
-                </wpfui:CardExpander.Header>
+                </ui:CardExpander.Header>
                 <StackPanel Style="{DynamicResource ExpanderContentHostStyle}"
                             IsEnabled="{Binding UseRealtimeNoteApi.Value, Mode=OneWay}">
                     <DockPanel>
@@ -71,13 +71,13 @@
                                    VerticalAlignment="Center" />
                     </DockPanel>
                 </StackPanel>
-            </wpfui:CardExpander>
+            </ui:CardExpander>
 
-            <wpfui:CardExpander Icon="Warning24">
-                <wpfui:CardExpander.Header>
-                    <ctrls:TextPair Grid.Column="0"
+            <ui:CardExpander Icon="Warning24">
+                <ui:CardExpander.Header>
+                    <metro:TextPair Grid.Column="0"
                                     Text="リアルタイムノート API について" />
-                </wpfui:CardExpander.Header>
+                </ui:CardExpander.Header>
                 <StackPanel Style="{DynamicResource ExpanderContentHostStyle}">
                     <TextBlock TextWrapping="Wrap"
                                Foreground="{DynamicResource TextFillColorTertiaryBrush}">
@@ -145,7 +145,7 @@
                                    Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
                     </Grid>
                 </StackPanel>
-            </wpfui:CardExpander>
+            </ui:CardExpander>
         </StackPanel>
     </DockPanel>
 </Page>
