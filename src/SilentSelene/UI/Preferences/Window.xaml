@@ -11,7 +11,7 @@
                  xmlns:local="clr-namespace:SilentSelene.UI.Preferences"
                  xmlns:binds="clr-namespace:SilentSelene.UI.Preferences.Bindings"
                  mc:Ignorable="d"
-                 Title="Preferences"
+                 Title="{Binding Title.Value, Mode=OneWay}"
                  Width="1150"
                  Height="800"
                  UseLayoutRounding="True"
@@ -42,10 +42,6 @@
             <metro:TitleBar.Icon>
                 <ui:ImageIcon Source="{metro:Icon /SilentSelene;component/.assets/Icons/SilentSelene.ico, 32}" />
             </metro:TitleBar.Icon>
-            <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Mode=OneWay}"
-                       FontSize="14"
-                       VerticalAlignment="Center"
-                       Margin="47,0,0,0" />
         </metro:TitleBar>
 
         <ui:NavigationView TitleBar="{Binding ElementName=DummyTitleBar}"

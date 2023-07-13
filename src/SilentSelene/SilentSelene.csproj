@@ -17,7 +17,7 @@
     <PackageReadmeFile>..\..\README.md</PackageReadmeFile>
     <PackageIcon>.assets\Icons\SilentSelene@128px.png</PackageIcon>
     <ApplicationIcon>.assets\Icons\SilentSelene.ico</ApplicationIcon>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

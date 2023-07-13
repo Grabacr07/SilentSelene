@@ -18,6 +18,8 @@ public class Window : WindowBase
 
     internal Window(UserSettings settings)
     {
+        this.Title.Value = "Preferences";
+
         this._settings = settings;
         this.Generals = new Generals(settings);
         this.Accounts = new Accounts(settings);
