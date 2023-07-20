@@ -5,6 +5,7 @@ on:
     branches: [ master, win11 ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
 
 
 env:
