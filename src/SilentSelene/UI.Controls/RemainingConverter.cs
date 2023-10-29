@@ -10,7 +10,7 @@ public class RemainingConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         => value is TimeSpan span
-            ? $"{span.TotalHours:00}:{span.Minutes:00}:{span.Seconds:00}"
+            ? $"{(int)span.TotalHours:00}:{span.Minutes:00}:{span.Seconds:00}"
             : "";
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
