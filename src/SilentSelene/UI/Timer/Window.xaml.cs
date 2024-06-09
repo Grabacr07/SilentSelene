@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Input;
 using MetroTrilithon.UI.Interop;
 using SilentSelene.Properties;
-using Wpf.Ui.Appearance;
 
 namespace SilentSelene.UI.Timer;
 
@@ -17,7 +16,6 @@ partial class Window
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
-        Watcher.Watch(this);
 
         if (UserSettings.Default.WindowPlacement != new Point(0, 0))
         {

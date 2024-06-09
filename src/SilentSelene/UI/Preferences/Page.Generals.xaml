@@ -72,16 +72,16 @@
                                VerticalAlignment="Center" />
                 </DockPanel>
                 <Border Style="{DynamicResource ExpanderContentSeparatorStyle}" />
-                <ui:Hyperlink Content="通知のテスト"
-                              Icon="AlertOn24"
-                              Margin="0,0,0,-4">
+                <ui:HyperlinkButton Content="通知のテスト"
+                                    Icon="AlertOn24"
+                                    Margin="0,0,0,-4">
                     <b:Interaction.Triggers>
                         <b:EventTrigger EventName="Click">
                             <livet:LivetCallMethodAction MethodTarget="{Binding}"
                                                          MethodName="TestNotification" />
                         </b:EventTrigger>
                     </b:Interaction.Triggers>
-                </ui:Hyperlink>
+                </ui:HyperlinkButton>
             </StackPanel>
         </ui:CardExpander>
     </StackPanel>
