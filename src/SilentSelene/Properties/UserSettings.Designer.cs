@@ -12,7 +12,7 @@ namespace SilentSelene.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.2.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
     internal sealed partial class UserSettings : global::System.Configuration.ApplicationSettingsBase {
         
         private static UserSettings defaultInstance = ((UserSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new UserSettings())));
@@ -25,7 +25,7 @@ namespace SilentSelene.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("160")]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
         public int MaxResin {
             get {
                 return ((int)(this["MaxResin"]));
@@ -85,7 +85,7 @@ namespace SilentSelene.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("160")]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
         public int OverflowResin {
             get {
                 return ((int)(this["OverflowResin"]));

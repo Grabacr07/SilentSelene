@@ -23,6 +23,9 @@ partial class App
     public App()
     {
         SettingsUtil.Update();
+
+        UserSettings.Default.MaxResin = 200;
+        UserSettings.Default.Save();
     }
 
     protected override void OnStartup(StartupEventArgs e)

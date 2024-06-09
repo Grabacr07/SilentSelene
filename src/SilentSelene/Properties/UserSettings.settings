@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="MaxResin" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">160</Value>
+      <Value Profile="(Default)">200</Value>
     </Setting>
     <Setting Name="MinResin" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -18,7 +18,7 @@
       <Value Profile="(Default)">2000-01-01</Value>
     </Setting>
     <Setting Name="OverflowResin" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">160</Value>
+      <Value Profile="(Default)">200</Value>
     </Setting>
     <Setting Name="NotifyOverflow" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
